@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Project Showcase</title>
+</head>
+<body>
+    <!-- This is a heading about me that is coloured blue and has Arial Font -->
+    <header>
+        <h1 style="color:rgb(52,40,186); font-family: 'Arial';"> Project Showcase</h1>
+    </header>
+    <!-- Navigation menu section -->
+    <nav>
+        <ul>
+            <li style="font-family: 'Arial';"><a href="index.html">Home</a></li>
+            <li style="font-family: 'Arial';"><a href="about.html">About</a></li>
+            <li style="font-family: 'Arial';"><a href="teaching.html">Teaching Practice</a></li>
+            <li style="font-family: 'Arial';"><a href="projects.html">Project Showcase</a></li>
+            <li style="font-family: 'Arial';"><a href="worksamples.html">Samples of Work</a></li>
+            <li style="font-family: 'Arial';"><a href="contact.html">Contact Me</a></li>
+        </ul>
+    </nav>
+    <!-- This is the main content area for my page -->
+    <main>
+        <!-- This is the section for showcasing projects/units I've taight - in flexbox format -->
+        <section>
+            <style>
+                .flex-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                    justify-content: space-between;
+                    margin-top: 20px;
+                }
+
+                .project-card {
+                    flex: 1 1 150px;
+                    background-color: #f9f9f9;
+                    border: 1px solid #ddd;
+                    padding: 15px;
+                    border-radius: 8px;
+                    box-shadow: 1px 2px 4px rgba(0,0,0,0.1)
+                }
+
+                .project-card img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 4px;
+                }
+
+                .project-card h3 {
+                    margin-top: 10px;
+                    font-size: 1.1rem;
+                    font-family: 'Arial';
+                    color: #2c3e50;
+                }
+
+                .project-card p {
+                    font-family: 'Arial';
+                }
+            </style>
+            <div class="flex-container">
+                <div class="project-card">
+                    <img src="images/project1.png" alt="Photo of a Electromechanical phone box project created by Jae Foster">
+                    <h3>Electromechnical Phone Box Project</h3>
+                    <p>This Phone Box project was completed in TECH211 - Electromechanical Technologies</p>
+                </div>
+                <div class="project-card">
+                    <img src="images/project2.png" alt="Photo of a Heirloom box project created by Jae Foster">
+                    <h3>Timber Heirloom Box Project</h3>
+                    <p>This Heirloom Box project was completed in TECH205 - Design in Timber</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
