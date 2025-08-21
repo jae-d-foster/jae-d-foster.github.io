@@ -5,58 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"
 
 <!-- This is the title called about me -->
-<title>Jae's Teaching Portfolio</title>
-  <style>
-    body {
-      background-color: #BFEFFF;
-    }
-  </style>
+<title>Jae's Teaching Portfolio - Home</title>
+<link rel="stylesheet" href="starter.css">
 </head>
 <body>
     <!-- This is a heading about me that is coloured blue and has Arial Font -->
     <header>
-        <h1 style="color:rgb(52,40,186); font-family: 'Arial';"> My Teaching Portfolio</h1>
+        <h1>My Teaching Portfolio</h1>
     </header>
     <!-- Navigation menu section -->
     <nav>
-        <ul>
-            <li style="font-family: 'Arial';"><a href="index.html">Home</a></li>
-            <li style="font-family: 'Arial';"><a href="about.html">About</a></li>
-            <li style="font-family: 'Arial';"><a href="teaching.html">Teaching Practice</a></li>
-            <li style="font-family: 'Arial';"><a href="projects.html">Project Showcase</a></li>
-            <li style="font-family: 'Arial';"><a href="worksamples.html">Samples of Work</a></li>
-            <li style="font-family: 'Arial';"><a href="contact.html">Contact Me</a></li>
-        </ul>
+        <div class="container">
+            <ul>
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="teaching.html">Teaching Practice</a></li>
+                <li><a href="projects.html">Project Showcase</a></li>
+                <li><a href="worksamples.html">Samples of Work</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+            </ul>
+        </div>
     </nav>
     <!-- This is the main content area for my page -->
     <main>
         <!-- This is my name and intro -->
         <section>
-            <h1 style="font-family: 'Arial';">Jae Foster</h1>
+            <h1>Jae Foster</h1>
         </section>
         <!-- This is my profile picture -->
         <section>
             <img src="images/profilepicture.png" alt="circle-shaped profile picture of Jae Foster" width="200"><br>
         </section>
-        <!-- This is the unordered list of attributes I am known for -->
+        
+      <!-- This is the section for showcasing projects/units I've taight - in flexbox format -->
         <section>
-            <h2 style="font-family: 'Arial';">Professional Summary</h2>
-            <ul style="font-family: 'Arial';">
-                <li>Student Learning Support Officer</li>
-                <li>Tutoring Business Owner</li>
-                <li>NSW DoE Scholar</li>
-            </ul>
+            <style>
+                .flex-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                    justify-content: space-between;
+                    margin-top: 20px;
+                }
+
+                .info-card {
+                    flex: 1 1 150px;
+                    background-color: #f9f9f9;
+                    border: 1px solid #ddd;
+                    padding: 15px;
+                    border-radius: 8px;
+                    box-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+                }
+
+                .info-card img {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 10px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .info-card h3 {
+                    margin-top: 10px;
+                    font-size: 1.1rem;
+                    font-family: Arial;
+                    color: #2c3e50;
+                }
+
+                .info-card ul {
+                    font-family: 'Arial';
+                }
+            </style>
+            <div class="flex-container">
+                <div class="info-card">
+                    <img src="images/professionalsummary.png" alt="Icon of a professional summary">
+                    <h2>Professional Summary</h2>
+                        <!-- This is the unordered list of attributes I am known for -->
+                        <section>
+                            <ul style="font-family: 'Arial';">
+                                <li>Student Learning Support Officer</li>
+                                <li>Tutoring Business Owner</li>
+                                <li>NSW Department of Education (DoE) Scholar</li>
+                            </ul>
+                        </section>
+                </div>
+                <div class="info-card">
+                    <img src="images/professionaljourney.png" alt="Icon of professional journey">
+                    <h2>Professional Journey</h2>
+                        <!-- This is an ordered list that represents key milestones -->
+                        <section>
+                            <ol style="font-family: 'Arial';">
+                                <li>Working at DoE as a Student Learning Support Officer.</li>
+                                <li>Started supporting students through my tutoring business.</li>
+                                <li>Currently in my third year of University, Studying Secondary TAS Teaching.</li>
+                                <li>Completed three practicums which includes one rural placement in Armidale.</li>
+                            </ol>
+                        </section>
+                </div>
         </section>
-        <!-- This is an ordered list that represents key milestones -->
-        <section>
-            <h3 style="font-family: 'Arial';"><em>Professional Journey</em></h3>
-            <ol style="font-family: 'Arial';">
-                <li>Working at DoE as a Student Learning Support Officer</li>
-                <li>Started supporting students through my tutoring business</li>
-                <li>Currently in my thrid year of Uni Studying Secondary TAS Teaching</li>
-                <li>Completed three practicums which includes one rural placement</li>
-            </ol>
-      </section>
     </main>
+    <!-- This is the footer section for my page, in line with Semantic HTML -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jae Foster. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

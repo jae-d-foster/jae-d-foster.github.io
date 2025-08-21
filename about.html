@@ -2,90 +2,64 @@
 <html lang="en">
 <head>
 <!-- This is the title called about me -->
-<title>About Me</title>
-  <style>
-    body {
-      background-color: #BFEFFF;
-    }
-  </style>
+<title>Jae's Teaching Portfolio - About Me</title>
+<link rel="stylesheet" href="starter.css">
 </head>
 <body>
   <!-- This is a heading about me that is coloured blue and has Arial Font -->
   <header>
-    <h1 style="color:rgb(52,40,186); font-family: 'Arial';"> About Me</h1>
+    <h1>About Me</h1>
   </header>
   <!-- Navigation menu section -->
   <nav>
-    <ul>
-      <li style="font-family: 'Arial';"><a href="index.html">Home</a></li>
-      <li style="font-family: 'Arial';"><a href="about.html">About</a></li>
-      <li style="font-family: 'Arial';"><a href="teaching.html">Teaching Practice</a></li>
-      <li style="font-family: 'Arial';"><a href="projects.html">Project Showcase</a></li>
-      <li style="font-family: 'Arial';"><a href="worksamples.html">Samples of Work</a></li>
-      <li style="font-family: 'Arial';"><a href="contact.html">Contact Me</a></li>
-    </ul>
+      <div class="container">
+          <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a class="active" href="about.html">About</a></li>
+              <li><a href="teaching.html">Teaching Practice</a></li>
+              <li><a href="projects.html">Project Showcase</a></li>
+              <li><a href="worksamples.html">Samples of Work</a></li>
+              <li><a href="contact.html">Contact Me</a></li>
+          </ul>
+      </div>
   </nav>
   <!-- This is the main conent area for my page -->
   <main>
-  <!-- This is my profile picture -->
+  <!-- My name, University, University Degree Link and profile picture -->
   <section>
-    <img src="images/profilepicture.png" alt="circle-shaped profile picture of Jae Foster" width="200"><br>
-  </section>
-  <!-- My name -->
-  <section>
-    <h2 style="font-family: 'Arial';"> Jae Foster</h2>
-    <h3 style="font-family: 'Arial';"><i>Australian Catholic University</i></h3>
-    <!-- Link to ACU D&T degree website -->
-    <a style="font-family: 'arial';"href="https://www.acu.edu.au/course/bachelor-of-education-secondarybachelor-of-arts-design-innovation-and-technologies" target="_blank">My Degree Link</a>
+    <article class="profile">
+      <div class="profile-text">
+        <h2 style="font-family: 'Arial';">Jae Foster</h2>
+        <h3 style="font-family: 'Arial';"><i>Australian Catholic University</i></h3>
+        <!-- Link to ACU D&T degree website -->
+        <a style="font-family: 'arial';"href="https://www.acu.edu.au/course/bachelor-of-education-secondarybachelor-of-arts-design-innovation-and-technologies" target="_blank">Bachelor of Education (Secondary)/Bachelor of Arts (Design Innovation and Technologies)</a>
+        <p style="font-family: 'Arial';"> Hi, my name is Jae Foster and I’m currently studying to become a high school TAS teacher. I have a passion for design, technology, and helping others learn in creative and hands-on ways. I’m also a Student Learning Support Officer, where I work closely with students of all abilities to support their educational and emotional needs in the classroom. Finally, I am a NSW Department of Education Scholarship recipient for the teach.Rural scholarship.</p>
+      </div>
+      <div class="profile-photo">
+        <img src="images/profilepicture.png" alt="circle-shaped profile picture of Jae Foster">
+      </div>
+    </article>
     <!-- Paragraph 1 about me -->
-    <p style="font-family: 'Arial';"> Hi, my name is Jae Foster and I’m currently studying to become a high school TAS teacher. I have a passion for design, technology, and helping others learn in creative and hands-on ways. I’m also a Student Learning Support Officer, where I work closely with students of all abilities to support their educational and emotional needs in the classroom.</p>
-    <h4 style="font-family: 'Arial';">My favourite subjects are:</h4>
-    <ul>
-      <li style="font-family: 'Arial';">Woodwork</li>
-      <li style="font-family: 'Arial';">Design & Technology</li>
-      <li style="font-family: 'Arial';">Computing</li>
-    </ul>
-    <img src="images/subjectdisplaytiles.png" alt="Three favourite subject dispay tiles" width="500">
+    <article class="subject">
+      <div class="subject-text">
+        <h2>My Favourite Subjects Are:</h2>
+        <ul>
+          <li style="font-family: 'Arial';">Woodwork</li>
+          <li style="font-family: 'Arial';">Design & Technology</li>
+          <li style="font-family: 'Arial';">Computing</li>
+        </ul>
+      </div>
+      <div class="subject-image">
+        <img src="images/subjectdisplaytiles.png" alt="Three favourite subject dispay tiles" width="500">
+      </div>
+    </article>
     <!-- Paragraph 2 about me -->
+    <h2>Background Information</h2>
     <p style="font-family: 'Arial';"> Outside of university and school, I run my own tutoring business, where I support students in Maths, English, and assignment planning. I enjoy creating interactive learning tools and games that make education fun and accessible for everyone. I believe in building strong relationships with students and making learning feel engaging, relevant, and achievable.</p>
   </section>
   <!-- This section is my practicum placement overview in a table format -->
-  <section>
-    <style>
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-        font-family: Arial, san-serif;
-      }
-
-      th,td {
-        border: 1px solid rgb(52,40,186);
-        padding: 10px 12px;
-        text-align: left;
-      }
-      
-      thead {
-        background-color: #6ed7fa
-      }
-
-      th {
-        color:black;
-        font-weight: bold;
-      }
-
-      tr:nth-child(even) {
-        background-color: #BFEFFF
-      }
-
-      h2 {
-        font-family: 'Arial';
-        font-size: 1.4rem;
-        margin-bottom: 8px;
-        color:black
-      }
-    </style>
-    <h2 style="font-family: 'Arial';">Practicum Placement Overview</h2>
+  <section class="table">
+    <h2>Practicum Placement Overview</h2>
     <table style="font-family: 'Arial';">
       <thead>
         <tr>
@@ -98,20 +72,20 @@
       <tbody>
         <tr>
           <td>Chatswood High School</td>
-          <td>Stage 4 Digital Technologies</td>
-          <td>Year 7</td>
+          <td>Stage 4 & 5 Digital Technologies</td>
+          <td>Years 7 & 9</td>
           <td>Term 2, 2024</td>
         </tr>
             <tr>
           <td>Ku-ring-Gai High School</td>
           <td>Stage 5 Food Technology, Stage 5 Industrial Technology - Timber</td>
-          <td>Year 9</td>
+          <td>Years 7 & 9</td>
           <td>Term 4, 2024</td>
         </tr>
             <tr>
           <td>Armidale Secondary College</td>
           <td>Stage 4 Digital Technologies, Stage 5 & 6 Industrial Technology Timber</td>
-          <td>Year 8</td>
+          <td>Years 7, 9, 10 & 12</td>
           <td>Term 2-3, 2025</td>
         </tr>
       </tbody>
@@ -119,12 +93,18 @@
   </section>
     <!-- This is the philosophy button image -->
   <section>
-    <img src="images/teachingphilosophybutton.png" alt="Teaching Philosophy Button" width="200"> 
+    <h2>Teaching Philosophy</h2> 
     <p style="font-family:'Arial';">As a future teacher, I believe that all students are capable of growth when they feel safe, respected, and meaningfully engaged. My classroom management philosophy is built around the belief that behaviour is a form of communication, and that creating a predictable, inclusive, and relational environment is absolutely essential for promoting both wellbeing and academic success. I see my role as a teacher, as not only an instructor but also a facilitator of positive peer relationships, a model of respectful interactions, and a dedicated support for diverse student needs.
 
       My approach is built around the incorporation of Positive Behaviour Support (PBS), Bill Rogers’ Eclectic Model of Decisive Discipline, and elements of Choice Theory. These frameworks work along side one another in promoting proactive, structured, and student-centred behaviour support. PBS provides a tiered model for promoting positive behaviour and responding to misbehaviour with consistency and equity, while Rogers’ model adds practical strategies for maintaining calm authority and respectful correction to behaviour. Choice Theory informs my focus on student agency, which helps learners understand the link between their choices and consequences in a supportive way. Together, these models support the development of safe, engaging classrooms that ultimately prioritise wellbeing, connection, and accountability.
-</p>
+    </p>
   </section>
   </main>
+  <!-- This is the footer section for my page, in line with Semantic HTML -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Jae Foster. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
