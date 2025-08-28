@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jae's Teaching Portfolio - Samples of Work</title>
     <link rel="stylesheet" href="starter.css">
 </head>
@@ -19,6 +20,8 @@
                 <li><a href="teaching.html">Teaching Practice</a></li>
                 <li><a href="projects.html">Project Showcase</a></li>
                 <li><a class="active" href="worksamples.html">Samples of Work</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="resume.html">Resume</a></li>
                 <li><a href="contact.html">Contact Me</a></li>
             </ul>
         </div>
@@ -26,9 +29,60 @@
     <!-- This is the main content area for my page -->
     <main>
         <!-- This is the header and description section -->
+        <section class="section">
+            <h2>Work Samples</h2>
+        <!-- This is the section for showcasing projects/units I've taight - in flexbox format -->
         <section>
-            <h2>Samples of Work</h2>
-            <p>Below are some projects that I have completed while studying at ACU. These projects cover a wide range of subjects, and unit areas.</p>
+            <style>
+                .flex-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                    justify-content: space-between;
+                    margin-top: 20px;
+                }
+
+                .project-card {
+                    flex: 1 1 150px;
+                    background-color: #f9f9f9;
+                    border: 1px solid #ddd;
+                    padding: 15px;
+                    border-radius: 8px;
+                    box-shadow: 1px 2px 4px rgba(0,0,0,0.1)
+                }
+
+                .project-card h3 {
+                    margin-top: 10px;
+                    font-size: 1.1rem;
+                    font-family: Arial;
+                    color: #2c3e50;
+                }
+
+                .project-card p {
+                    font-family: 'Arial';
+                }
+            </style>
+            <div class="flex-container">
+                <div class="project-card">
+                    <h2>Coloured Fish Kites</h2>
+                    <p>This is an video file that shows coloured fish kites flying in the sky.</p>
+                    <video controls width="100%" height="auto" controls poster="images/fish_kites.jpg" Video of coloured flying fish kites in the sky">
+                    <source src="media/flying_coloured_kites.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </div>
+                <div class="project-card">
+                    <h2>Super Spiffy Audio</h2>
+                    <p>This is an audio file that you can listen to while browsing the work samples.</p>
+                    <audio controls>
+                    <source src="media/Super_Spiffy.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </div>
+                <div class="project-card">
+                    <h2>Timber CNC Designs</h2>
+                    <p>This Youtube video has inspired me to use the CNC machine for my own major project for TECH213. It has shown me a variety of different CNC designs that helped me to understand the possiblities of what the CNC machine can do and how it can assist me.</p>
+                    <iframe width="100%" height="180" src="https://www.youtube.com/embed/wgCcq4rWXWA?si=scOL3RdCk8VJ02Uk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
         </section>
     </main>
     <!-- This is the footer section for my page, in line with Semantic HTML -->

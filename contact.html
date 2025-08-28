@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jae's Teaching Portfolio - Contact Me</title>
     <link rel="stylesheet" href="starter.css">
 </head>
@@ -19,15 +20,57 @@
               <li><a href="teaching.html">Teaching Practice</a></li>
               <li><a href="projects.html">Project Showcase</a></li>
               <li><a href="worksamples.html">Samples of Work</a></li>
+              <li><a href="resources.html">Resources</a></li>
+              <li><a href="resume.html">Resume</a></li>
               <li><a class="active" href="contact.html">Contact Me</a></li>
           </ul>
       </div>
   </nav>
     <!-- This is the main content area for my page -->
     <main>
-        <!-- This is the section for ... -->
-        <section>
-            <p>Add some text here</p>
+        <!-- This is the section for Header and Paragraph -->
+        <section class="section">
+            <h2>Get in Touch</h2>
+            <p>If you would like to get in touch with me, please fill out the contact form below. I look forward to hearing from you!</p>
+            <!-- Contact form section -->
+            <form id="contact-form" action="#" method="post" autocomplete="on">
+                <fieldset>
+                    <legend>Contact Form</legend>
+                    <!-- Form text input for Full Name -->
+                    <label for="name">Full Name</label>
+                    <input id="name" name="name" type="text" placeholder="John Smith" required minlength="6">
+                    <!-- Form text input for Email Address -->
+                    <label for="email">Email Address</label>
+                    <input id="email" name="email" type="email" placeholder="name@example.com" required autocomplete="email">
+                    <!-- Form checkbox input for Reason for contact -->
+                    <label>Reason for Contact:</label>
+                    <div>
+                        <input type="checkbox" id="reason-question" name="reason[]" value="Question">
+                        <label for="reason-question">Question</label>
+                        <input type="checkbox" id="reason-feedback" name="reason[]" value="Feedback">
+                        <label for="reason-feedback">Feedback</label>
+                        <input type="checkbox" id="reason-collab" name="reason[]" value="Collaboration">
+                        <label for="reason-collab">Collaboration</label>
+                        <input type="checkbox" id="reason-other" name="reason[]" value="Other">
+                        <label for="reason-other">Other</label>
+                    </div>
+                    <!-- Form text input for Message -->
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" type="message" placeholder="How can I help?" required minlength="8"></textarea>
+                    <!-- Honeypot anti-spam field -->
+                    <input type="text" name="honey" tabindex="-1" aria-hidden="true" style="position:absolute; left:-9999px;">
+                    <!-- Button tag used for input, in line with Semantic HTML -->
+                    <button type="submit">Send</button>
+                </fieldset>
+            </form>
+        </section>
+        <!-- This is the section for links to socials -->
+        <section class="section" aria-labelledby="socials">
+            <h2 id="socials">Add me on Socials</h2>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/jae-foster-50811332a" target="_blank" rel="noopener" aria-label="Visit my LinkedIn profile">LinkedIn</a></li>
+                <!-- For more social links... -->
+            </ul>
         </section>
     </main>
     <!-- This is the footer section for my page, in line with Semantic HTML -->
