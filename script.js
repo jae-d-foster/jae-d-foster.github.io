@@ -7,16 +7,9 @@ let activeCategories = ['all'];
 
 // Function to filter projects by category
 function filterProjects(category, clickedElement) {
-    console.log('filterProjects called with category:', category);
-    console.log('clickedElement:', clickedElement);
-    console.log('Current activeCategories:', activeCategories);
-    
     // Get all project cards and filter buttons
     const projectCards = document.querySelectorAll('.project-card');
     const allButtons = document.querySelectorAll('.filter-btn');
-    
-    console.log('Found', projectCards.length, 'project cards');
-    console.log('Found', allButtons.length, 'filter buttons');
     
     if (category === 'all') {
         // Clear all active categories and set to 'all'
@@ -32,8 +25,6 @@ function filterProjects(category, clickedElement) {
         projectCards.forEach(card => {
             card.classList.remove('hidden');
         });
-        
-        console.log('Showing all projects');
     } else {
         // Remove 'all' from active categories if present
         activeCategories = activeCategories.filter(cat => cat !== 'all');
@@ -55,8 +46,6 @@ function filterProjects(category, clickedElement) {
             allButton.classList.remove('active');
         }
         
-        console.log('Active categories:', activeCategories);
-        
         // If no categories selected, revert to all
         if (activeCategories.length === 0) {
             activeCategories = ['all'];
@@ -66,21 +55,17 @@ function filterProjects(category, clickedElement) {
             projectCards.forEach(card => {
                 card.classList.remove('hidden');
             });
-            console.log('No categories selected, showing all');
             return;
         }
         
         // Filter projects based on active categories
         projectCards.forEach(card => {
             const cardCategory = card.getAttribute('data-category');
-            const cardTitle = card.querySelector('h3').textContent;
             
             if (activeCategories.includes(cardCategory)) {
                 card.classList.remove('hidden');
-                console.log('Showing:', cardTitle, '(Category:', cardCategory + ')');
             } else {
                 card.classList.add('hidden');
-                console.log('Hiding:', cardTitle, '(Category:', cardCategory + ')');
             }
         });
     }
@@ -93,8 +78,6 @@ let questionsAnswered = 0;
 
 // Function to handle quiz option selection
 function selectAnswer(element, questionId, answerValue) {
-    console.log('Answer selected:', questionId, answerValue);
-    
     // Remove selected class from all options in this question
     const questionDiv = element.closest('.quiz-question');
     questionDiv.querySelectorAll('.quiz-option').forEach(option => {
@@ -113,9 +96,6 @@ function selectAnswer(element, questionId, answerValue) {
         questionsAnswered++;
     }
     
-    console.log('Quiz answers so far:', quizAnswers);
-    console.log('Questions answered:', questionsAnswered);
-    
     // Show submit button when all questions are answered
     if (questionsAnswered >= 6) {
         document.getElementById('submit-btn').style.display = 'block';
@@ -124,8 +104,6 @@ function selectAnswer(element, questionId, answerValue) {
 
 // Function to calculate and display quiz results
 function submitQuiz() {
-    console.log('Quiz submitted with answers:', quizAnswers);
-    
     // Count points for each teaching style
     const scores = {
         'Facilitator': 0,
@@ -142,8 +120,6 @@ function submitQuiz() {
             scores[answer]++;
         }
     });
-    
-    console.log('Quiz scores:', scores);
     
     // Find the highest scoring style
     let topStyle = 'Hybrid';
@@ -206,14 +182,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuBtn = document.getElementById('menu-btn');
     const mobileNav = document.querySelector('nav');
     
-    // Debug: Check if elements are found
-    console.log('Elements found:', {
-        accessibilityBtn: !!accessibilityBtn,
-        accessibilityPopup: !!accessibilityPopup,
-        menuBtn: !!menuBtn,
-        mobileNav: !!mobileNav
-    });
-    
     // Variables to track current font size and dark mode state
     let currentFontSize = 'normal';
     let isDarkMode = false;
@@ -253,8 +221,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Store in localStorage so the setting persists
         localStorage.setItem('fontSize', size);
-        
-        console.log('Font size changed to:', size);
     }
     
     // Add click event listeners to font size buttons
@@ -279,8 +245,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Store in localStorage so the setting persists
         localStorage.setItem('darkMode', isDarkMode);
-        
-        console.log('Dark mode:', isDarkMode ? 'enabled' : 'disabled');
     }
     
     // Add click event listener to dark mode button
