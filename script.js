@@ -225,12 +225,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add click event listeners to font size buttons
     document.addEventListener('click', function(event) {
-        if (event.target.classList.contains('font-small-btn')) {
+        if (event.target.id === 'small-font-btn') {
             changeFontSize('small');
-        } else if (event.target.classList.contains('font-normal-btn')) {
+        } else if (event.target.id === 'normal-font-btn') {
             changeFontSize('normal');
-        } else if (event.target.classList.contains('font-large-btn')) {
+        } else if (event.target.id === 'large-font-btn') {
             changeFontSize('large');
+        } else if (event.target.id === 'reset-btn') {
+            resetToDefault();
         }
     });
     
@@ -245,11 +247,42 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Store in localStorage so the setting persists
         localStorage.setItem('darkMode', isDarkMode);
+        
+        // Update accessibility icon
+        updateAccessibilityIcon();
+    }
+    
+    // ========== RESET TO DEFAULT FUNCTIONALITY ==========
+    // Function to reset all accessibility settings to default
+    function resetToDefault() {
+        // Reset font size to normal
+        changeFontSize('normal');
+        
+        // Turn off dark mode
+        document.body.classList.remove('dark-mode');
+        isDarkMode = false;
+        localStorage.setItem('darkMode', false);
+        
+        // Update accessibility icon
+        updateAccessibilityIcon();
+    }
+    
+    // ========== ACCESSIBILITY ICON UPDATE ==========
+    // Function to update accessibility icon based on dark mode
+    function updateAccessibilityIcon() {
+        const accessibilityImg = document.querySelector('#accessibility-btn img');
+        if (accessibilityImg) {
+            if (isDarkMode) {
+                accessibilityImg.src = 'images/accessibility-icon-white.png';
+            } else {
+                accessibilityImg.src = 'images/accessibility-icon.png';
+            }
+        }
     }
     
     // Add click event listener to dark mode button
     document.addEventListener('click', function(event) {
-        if (event.target.classList.contains('dark-mode-btn')) {
+        if (event.target.id === 'dark-mode-btn') {
             toggleDarkMode();
         }
     });
@@ -286,31 +319,32 @@ document.addEventListener('DOMContentLoaded', function() {
         isDarkMode = true;
     }
     
+    // Update accessibility icon based on current mode
+    updateAccessibilityIcon();
+    
     // ========== GRADUATION COUNTDOWN FUNCTIONALITY ==========
     // Function to calculate and update countdown
     function updateCountdown() {
-        const graduationDate = new Date('2026-12-31'); // End of 2026
+        const graduationDate = new Date('2026-11-01'); // Graduation date - 374 days from Oct 23, 2025
         const now = new Date();
         const timeDifference = graduationDate - now;
         
         if (timeDifference > 0) {
-            // Calculate years, months, and days remaining
-            const years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365));
-            const months = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-            const days = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            // Calculate months, weeks, and days remaining
+            const totalDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const months = Math.floor(totalDays / 30);
+            const remainingDaysAfterMonths = totalDays % 30;
+            const weeks = Math.floor(remainingDaysAfterMonths / 7);
+            const days = remainingDaysAfterMonths % 7;
             
-            // Update the countdown display
-            const countdownElement = document.getElementById('countdown');
-            if (countdownElement) {
-                countdownElement.innerHTML = `
-                    <span class="countdown-number">${years}</span>
-                    <span class="countdown-label">Years</span>
-                    <span class="countdown-number">${months}</span>
-                    <span class="countdown-label">Months</span>
-                    <span class="countdown-number">${days}</span>
-                    <span class="countdown-label">Days</span>
-                `;
-            }
+            // Update the individual countdown elements
+            const monthsElement = document.getElementById('months');
+            const weeksElement = document.getElementById('weeks');
+            const daysElement = document.getElementById('days');
+            
+            if (monthsElement) monthsElement.textContent = months;
+            if (weeksElement) weeksElement.textContent = weeks;
+            if (daysElement) daysElement.textContent = days;
         }
     }
     

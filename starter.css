@@ -183,45 +183,51 @@ h1, h2, h3, h4, h5, h6 {
 nav {
   background: #ffffff;             /* White background to match header */
   font-size: 0.95rem;             /* Slightly smaller font in navigation */
-  width: 100%;                    /* Spans full width */
+  width: 250px;                   /* Fixed width for dropdown */
   margin: 0;                      /* No margin around nav */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Enhanced shadow for dropdown */
   display: none;                  /* Hidden by default - will show via JavaScript */
-  position: fixed;                /* Fixed position so it stays in place when scrolling */
-  top: 67px;                      /* Position right below the header (adjusted for proper spacing) */
-  left: 0;                        /* Align to left edge */
-  right: 0;                       /* Stretch to right edge */
-  z-index: 99;                    /* Below header but above content */
-  max-height: 400px;              /* Limit height so it doesn't take up whole screen */
-  overflow-y: auto;               /* Add scrolling if menu is too long */
+  position: absolute;             /* Absolute position for dropdown */
+  top: 60px;                      /* Position right below the header */
+  right: 20px;                    /* Position from right edge */
+  z-index: 1000;                  /* High z-index to appear above everything */
+  border-radius: 8px;             /* Rounded corners */
+  border: 1px solid #e0e0e0;      /* Light border */
+  overflow: hidden;               /* Hide overflow for rounded corners */
 }
 nav .container {
-  width: min(100% - 2*var(--spacing), var(--maxw));   /* Responsive container width */
-  margin: 0 auto;                                     /* Centers content horizontally */
-  display: flex;                        /* Layout: brand/left + links/right (if needed) */
-  align-items: center;                  /* Centers nav items */
-  justify-content: space-between;       /* Distribute items on the main axis with equal gaps between them; first/last items flush to container edges */
+  width: 100%;                                        /* Full width of nav */
+  margin: 0;                                          /* No margin */
+  display: block;                                     /* Block display for vertical list */
+  padding: 0;                                         /* No padding */
 }
 nav ul {
   list-style: none;   /* Removes bullets */
-  display: flex;      /* Horizontal layout */
-  gap: 14px;          /* Space between links */
+  display: block;     /* Vertical layout */
   margin: 0;          /* Removes margin */
   padding: 0;         /* Removes padding */
 }
 nav a {
-  display: block;         /* Larger click target */
-  color: white;         /* White link text */
+  display: block;         /* Block display for full-width links */
+  color: var(--secondary-color);         /* Secondary color text */
   text-decoration: none;  /* Remove underline/other decorations from text/links */
-  padding: 14px 16px;      /* Space inside link area */
-  border-radius: 8px;     /* Slightly rounded corners */
+  padding: 15px 20px;     /* Generous padding for touch targets */
+  border-bottom: 1px solid #f0f0f0;     /* Light separator line */
+  font-family: 'Montserrat', sans-serif; /* Montserrat font */
+  font-weight: 500;       /* Medium font weight */
+  transition: all 0.3s ease;             /* Smooth transition */
 }
 nav a:hover { 
-  background: rgba(255,255,255,0.15);   /* Light background on hover */
+  background: var(--blue-color);   /* Blue background on hover */
+  color: white;                    /* White text on hover */
 }
 nav a:focus-visible {     
-  outline: 2px solid #fff;              /* white outline for increased accessibility/ keyboard-focus styling */
-  outline-offset: 2px;                    /* outline offset for increased accessibility/ keyboard-focus styling */
+  outline: 2px solid var(--blue-color);    /* Blue outline for accessibility */
+  outline-offset: -2px;                    /* Inset outline */
+}
+
+nav a:last-child {
+  border-bottom: none;             /* Remove border from last item */
 }
 
 /* Mobile menu open state */
@@ -230,7 +236,8 @@ nav.mobile-menu-open {
 }
 
 .active {
-  background-color: grey;     /* Indicates active page link */
+  background-color: var(--blue-color) !important;     /* Blue background for active page */
+  color: white !important;                            /* White text for active page */
 }
 @media (max-width: 640px) {               /* responsiveness for viewing on mobile */
   nav .container { flex-wrap: wrap; }
@@ -619,11 +626,23 @@ body.dark-mode .page-title {
 }
 
 body.dark-mode nav {
-  background: #3c3c3c;                             /* Dark navigation background */
+  background: #2a2a2a;                            /* Dark background */
+  border-color: #404040;                          /* Dark border */
 }
 
 body.dark-mode nav a {
-  color: #ffffff;                                  /* White navigation links */
+  color: #e0e0e0;                                 /* Light text */
+  border-bottom-color: #404040;                   /* Dark separator */
+}
+
+body.dark-mode nav a:hover {
+  background: #87CEEB;                            /* Light blue background on hover */
+  color: #2a2a2a;                                 /* Dark text on hover */
+}
+
+body.dark-mode .active {
+  background-color: #87CEEB !important;          /* Light blue background for active page */
+  color: #2a2a2a !important;                     /* Dark text for active page */
 }
 
 body.dark-mode .accessibility-popup {
