@@ -5,67 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jae's Teaching Portfolio - Home</title>
     <link rel="stylesheet" href="starter.css">
+    <!-- Link to our JavaScript file for interactive functionality -->
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- This is a heading about me that is coloured blue and has Arial Font -->
+    <!-- New thin white header with page title and interactive buttons -->
     <header>
-        <h1>My Teaching Portfolio</h1>
-    </header>
-    <!-- Navigation menu section -->
-    <nav>
         <div class="container">
-            <ul>
-                <li><a class="active" href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Project Showcase</a></li>
-                <li><a href="worksamples.html">Samples of Work</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
-            </ul>
+            <!-- Page title on the left side -->
+            <h1 class="page-title">My Teaching Portfolio</h1>
+            
+            <!-- Right side of header with buttons and separators -->
+            <div class="header-right">
+                <!-- Accessibility button to open accessibility options -->
+                <button class="header-btn" id="accessibility-btn" title="Accessibility Options">
+                    <img src="images/accessibility-icon.png" alt="Accessibility icon">
+                </button>
+                
+                <!-- Separator line between accessibility and menu -->
+                <div class="header-separator"></div>
+                
+                <!-- Menu button to open navigation menu -->
+                <button class="header-btn" id="menu-btn" title="Menu" aria-expanded="false">
+                    ☰
+                </button>
+            </div>
         </div>
+        
+        <!-- Accessibility popup - hidden by default -->
+        <div class="accessibility-popup" id="accessibility-popup">
+            <h3>Accessibility Options</h3>
+            <button id="small-font-btn">Small Text</button>
+            <button id="normal-font-btn">Normal Text</button>
+            <button id="large-font-btn">Large Text</button>
+            <button id="dark-mode-btn">Dark Mode</button>
+            <button id="reset-btn">Reset to Default</button>
+        </div>
+    </header>
+    
+    <!-- Mobile navigation menu - hidden by default, shown when menu button is clicked -->
+    <nav>
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Project Showcase</a>
+        <a href="worksamples.html">Samples of Work</a>
+        <a href="resources.html">Resources</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact Me</a>
     </nav>
     <!-- This is the main content area for my page -->
     <main>
-        <!-- This is my name and intro -->
-        <section>
-            <h1>Jae Foster</h1>
-        </section>
-        <!-- This is my profile picture -->
-        <section>
-            <img src="images/profilepicture.png" alt="circle-shaped profile picture of Jae Foster" width="200"><br>
-        </section>
+        <!-- Page title and icon section -->
+        <div class="page-header-section">
+            <h1 class="page-main-title">Home</h1>
+            <div class="page-header-divider"></div>
+            <img src="images/profilepicture.png" alt="Profile picture" class="page-header-icon">
+        </div>
+        <div class="page-header-separator"></div>
         
-      <!-- This is the section for showcasing projects/units I've taight - in flexbox format -->
-        <section>
-            <div class="flex-container">
-                <div class="info-card">
-                    <img src="images/professionalsummary.png" alt="Icon of a professional summary">
-                    <h2>Professional Summary</h2>
-                        <!-- This is the unordered list of attributes I am known for -->
-                        <section>
-                            <ul style="font-family: 'Arial';">
-                                <li>Student Learning Support Officer</li>
-                                <li>Tutoring Business Owner</li>
-                                <li>NSW Department of Education (DoE) Scholar</li>
-                            </ul>
-                        </section>
+        <!-- Main content layout with sidebar and content -->
+        <div class="main-layout">
+            <!-- Professional Summary Sidebar -->
+            <aside class="professional-sidebar">
+                <img src="images/professional-summary-banner.png" alt="Professional Summary Banner" class="sidebar-banner">
+                <h2 class="sidebar-title">Professional Summary</h2>
+                <p class="sidebar-description">THIS PROFESSIONAL SUMMARY REFLECTS MY PREVIOUS AND CURRENT EMPLOYMENT</p>
+                <div class="sidebar-separator"></div>
+                
+                <!-- Employment Cards -->
+                <div class="employment-cards">
+                    <div class="employment-card">
+                        <img src="images/slso-image.png" alt="Student Learning Support Officer" class="employment-image">
+                        <h3>Student Learning Support Officer</h3>
+                        <p class="employment-company">NSW Department of Education</p>
+                        <p class="employment-date">(03/2023 - Present)</p>
+                    </div>
+                    
+                    <div class="employment-card">
+                        <img src="images/hireup-image.png" alt="Support Worker" class="employment-image">
+                        <h3>Support Worker</h3>
+                        <p class="employment-company">Hireup</p>
+                        <p class="employment-date">(02/2024 - 09/2024)</p>
+                    </div>
+                    
+                    <div class="employment-card">
+                        <img src="images/jando-image.png" alt="Business Owner/Tutor" class="employment-image">
+                        <h3>Business Owner/Tutor</h3>
+                        <p class="employment-company">Jando Tutoring</p>
+                        <p class="employment-date">(10/2024 - Present)</p>
+                    </div>
+                    
+                    <div class="employment-card">
+                        <img src="images/acu-image.png" alt="Student Mentor" class="employment-image">
+                        <h3>Student Mentor</h3>
+                        <p class="employment-company">Australian Catholic University</p>
+                        <p class="employment-date">(11/2024 - 06/2025)</p>
+                    </div>
                 </div>
-                <div class="info-card">
-                    <img src="images/professionaljourney.png" alt="Icon of professional journey">
-                    <h2>Professional Journey</h2>
-                        <!-- This is an ordered list that represents key milestones -->
-                        <section>
-                            <ol style="font-family: 'Arial';">
-                                <li>Working at DoE as a Student Learning Support Officer.</li>
-                                <li>Started supporting students through my tutoring business.</li>
-                                <li>Currently in my third year of University, Studying Secondary TAS Teaching.</li>
-                                <li>Completed three practicums which includes one rural placement in Armidale.</li>
-                            </ol>
-                        </section>
+            </aside>
+            
+            <!-- Main Content Area -->
+            <section class="main-content">
+                <div class="intro-section">
+                    <p class="intro-text">I'm a passionate pre-service TAS teacher with a strong background in design, digital technologies, and education. I'm committed to creating engaging, inclusive learning experiences that inspire creativity, problem-solving, and lifelong learning in students.</p>
+                    
+                    <img src="images/index-jando-image.png" alt="Jae Foster Teaching" class="intro-image">
+                    
+                    <p class="education-description">I am currently in my third year at the Australian Catholic University, studying a Bachelor of Education (Secondary) and Bachelor of Arts (Design Innovation and Technologies). Throughout my degree, I have developed a strong passion for teaching and design, particularly within the areas of Industrial technology, digital technologies, food technology and design and technology. I am dedicated to creating engaging and inclusive learning environments that foster creativity, problem-solving, and practical skills. I look forward to graduating at the end of 2026 and beginning my career as a secondary TAS teacher.</p>
+                    
+                    <!-- Action buttons section -->
+                    <div class="action-buttons">
+                        <a href="resume.html" class="action-btn">Download Resume</a>
+                        <a href="contact.html" class="action-btn">Contact Me</a>
+                    </div>
+                    
+                    <!-- Graduation countdown section -->
+                    <div class="countdown-section">
+                        <h2>Countdown to Graduation</h2>
+                        <div class="countdown-container">
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="years" style="font-size: 8rem !important;">--</span>
+                                <span class="countdown-label">Year</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="months" style="font-size: 8rem !important;">--</span>
+                                <span class="countdown-label">Months</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="days" style="font-size: 8rem !important;">--</span>
+                                <span class="countdown-label">Days</span>
+                            </div>
+                        </div>
+                        <p class="graduation-date">Graduation: November 1st, 2026</p>
+                    </div>
                 </div>
-        </section>
+            </section>
+        </div>
     </main>
+    
     <!-- This is the footer section for my page, in line with Semantic HTML -->
     <footer>
         <div class="container">

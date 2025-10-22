@@ -5,64 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jae's Teaching Portfolio - Project Showcase</title>
     <link rel="stylesheet" href="starter.css">
+    <!-- Link to our JavaScript file for interactive functionality -->
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- This is a heading about me that is coloured blue and has Arial Font -->
+    <!-- New thin white header with page title and interactive buttons -->
     <header>
-        <h1>Project Showcase</h1>
+        <div class="container">
+            <!-- Page title on the left side -->
+            <h1 class="page-title">Project Showcase</h1>
+            
+            <!-- Right side of header with buttons and separators -->
+            <div class="header-right">
+                <!-- Accessibility button to open accessibility options -->
+                <button class="header-btn" id="accessibility-btn" title="Accessibility Options">
+                    <img src="images/accessibility-icon.png" alt="Accessibility icon">
+                </button>
+                
+                <!-- Separator line between accessibility and menu -->
+                <div class="header-separator"></div>
+                
+                <!-- Menu button to open navigation menu -->
+                <button class="header-btn" id="menu-btn" title="Menu" aria-expanded="false">
+                    ☰
+                </button>
+            </div>
+        </div>
+        
+        <!-- Accessibility popup - hidden by default -->
+        <div class="accessibility-popup" id="accessibility-popup">
+            <h3>Accessibility Options</h3>
+            <button id="small-font-btn">Small Text</button>
+            <button id="normal-font-btn">Normal Text</button>
+            <button id="large-font-btn">Large Text</button>
+            <button id="dark-mode-btn">Dark Mode</button>
+            <button id="reset-btn">Reset to Default</button>
+        </div>
     </header>
-    <!-- Navigation menu section -->
-  <nav>
-      <div class="container">
-          <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a class="active" href="projects.html">Project Showcase</a></li>
-              <li><a href="worksamples.html">Samples of Work</a></li>
-              <li><a href="resources.html">Resources</a></li>
-              <li><a href="resume.html">Resume</a></li>
-              <li><a href="contact.html">Contact Me</a></li>
-          </ul>
-      </div>
-  </nav>
+    
+    <!-- Mobile navigation menu - hidden by default, shown when menu button is clicked -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="projects.html">Project Showcase</a>
+        <a href="worksamples.html">Samples of Work</a>
+        <a href="resources.html">Resources</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact Me</a>
+    </nav>
     <!-- This is the main content area for my page -->
     <main>
-        <!-- This is the header and description section -->
-        <section>
-            <h2>Project Showcase</h2>
-            <p>Below are some projects that I have completed while studying at ACU. These projects cover a wide range of subjects, and unit areas.</p>
+        <!-- Page title and icon section -->
+        <div class="page-header-section">
+            <h1 class="page-main-title">Projects</h1>
+            <div class="page-header-divider"></div>
+            <img src="images/profilepicture.png" alt="Profile picture" class="page-header-icon">
+        </div>
+        <div class="page-header-separator"></div>
+        
+        <!-- Intro section -->
+        <section class="about-section">
+            <h2 class="section-title-centered">Intro</h2>
+            <p class="section-text">Over the past three years at university, I have had the opportunity to design and create a range of projects across various TAS subject areas in different units. These include timber, metal, textiles, laser cutting, 3D printing, and coding/electromechanical systems. Each project has allowed me to develop practical skills, explore creative problem-solving, and apply design thinking principles across different technologies.</p>
         </section>
-        <!-- This is the section for showcasing projects/units I've taight - in flexbox format -->
-        <section>
-            <div class="flex-container">
-                <div class="project-card">
+        
+        <!-- Projects section -->
+        <section class="about-section">
+            <h2 class="section-title-centered">Projects</h2>
+            
+            <!-- Filter buttons -->
+            <div class="project-filters">
+                <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+                <button class="filter-btn" onclick="filterProjects('timber', this)">Timber</button>
+                <button class="filter-btn" onclick="filterProjects('metal', this)">Metal</button>
+                <button class="filter-btn" onclick="filterProjects('product-design', this)">Product Design</button>
+                <button class="filter-btn" onclick="filterProjects('textiles', this)">Textiles</button>
+                <button class="filter-btn" onclick="filterProjects('electromechanical', this)">Electromechanical Tech</button>
+            </div>
+            
+            <!-- Projects container -->
+            <div class="projects-container">
+                <div class="project-card" data-category="electromechanical">
                     <img src="images/projectphonebox.png" alt="Photo of a Electromechanical phone box project created by Jae Foster">
-                    <h3>Electromechnical Phone Box Project</h3>
+                    <h3>Electromechanical Phone Box Project</h3>
                     <p>This Phone Box project was completed in TECH211 - Electromechanical Technologies</p>
                 </div>
-                <div class="project-card">
+                
+                <div class="project-card" data-category="timber">
                     <img src="images/projectheirloombox.png" alt="Photo of a Heirloom box project created by Jae Foster">
                     <h3>Timber Heirloom Box Project</h3>
                     <p>This Heirloom Box project was completed in TECH205 - Design in Timber</p>
                 </div>
-                <div class="project-card">
+                
+                <div class="project-card" data-category="product-design">
                     <img src="images/projectlamp.png" alt="Photo of a Lamp project created by Jae Foster">
                     <h3>Lamp Project</h3>
                     <p>This Lamp project was completed in TECH104 - Product Design</p>
                 </div>
-            </div>
-            <div class="flex-container">
-                <div class="project-card">
+                
+                <div class="project-card" data-category="timber">
                     <img src="images/projectstool.png" alt="Photo of a Japanese Inspired Stool project created by Jae Foster">
                     <h3>Stool Project</h3>
                     <p>This Japanese Inspired Stool project was completed in TECH205 - Design in Timber</p>
                 </div>
-                <div class="project-card">
+                
+                <div class="project-card" data-category="textiles">
                     <img src="images/projectpyjamaset.png" alt="Photo of a Pyjama Set project created by Jae Foster">
                     <h3>Pyjama Set Project</h3>
                     <p>This Pyjama Set project was completed in TECH108 - Design in Textiles</p>
                 </div>
-                <div class="project-card">
+                
+                <div class="project-card" data-category="metal">
                     <img src="images/projecthammer.png" alt="Photo of a Hammer project created by Jae Foster">
                     <h3>Hammer Project</h3>
                     <p>This Hammer project was completed in TECH206 - Design in Metal</p>

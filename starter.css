@@ -8,7 +8,8 @@
 
 /* ---------- 1) CSS Reset / Base ----------- */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+/* Import Montserrat font from Google Fonts for the entire website */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;   /* Include padding & border in total size for all elements + pseudo-elements */
@@ -36,40 +37,36 @@ img {
   --shadow: 0 4px 12px rgba(0,0,0,0.08);    /* Subtle shadow for depth */
   --spacing: 16px;         /* base spacing unit */
   --maxw: 1100px;          /* content width */
-  --font-body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;  /* Body font */
-  --font-head: "Outfit", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;   /* Headings font */
+  /* Set Montserrat as the main font for both body text and headings */
+  --font-body: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;  /* Body font */
+  --font-head: "Montserrat", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;   /* Headings font */
 }
 
 /* ---------- 3) Page Defaults --------------- */
 body {
-  background: var(--bg);          /* Uses background colour from variables */
+  background: #f1f1f1;            /* Light grey background for the entire page */
   color: var(--text);             /* Default text colour */
-  font-family: var(--font-body);  /* Sets font for body text */
+  font-family: var(--font-body);  /* Sets font for body text - now Montserrat */
   line-height: 1.6;               /* Improves readability by spacing out lines */
+  margin: 0;                      /* Remove default body margin */
+  padding: 0;                     /* Remove default body padding */
 }
 .site-title { 
   font-weight: 700;               /* Bold text */
   letter-spacing: 0.5px;          /* Slight spacing between letters */
 }
+/* Main content area - now in a white card with padding */
 main {
   width: min(100% - 2*var(--spacing), var(--maxw));   /* Responsive content width */
-  margin: 32px auto;                                  /* Centers main content with spacing */
+  margin: 20px auto;                                  /* Centers main content with spacing */
+  background: #ffffff;                                /* White background for the content card */
+  padding: 30px;                                      /* Padding inside the white card */
+  border-radius: var(--radius);                       /* Rounded corners for the card */
+  box-shadow: var(--shadow);                          /* Subtle shadow for depth */
 }
 
 /* ---------- 4) Typography ------------------ */
-h1, h2, h3 {
-  font-family: var(--font-head);  /* Uses heading font */
-  line-height: 1;                 /* Tight line spacing for headings */
-  margin: 0 0 0.6em;              /* Space below headings */
-  color: var(--brand);            /* Brand colour */
-}
-h1 {  
-  color: #002d9f;
-}
-h2 {  
-  color: #002d9f;
-  margin-top: 25px;
-}
+/* This section is now handled by the updated h1-h6 styles above */
 p { 
   margin: 0 0 1em;                /* Space below paragraphs */
   color: var(--text);             /* Standard text colour */
@@ -89,34 +86,114 @@ a:hover, a:focus {
 }
 
 /* ---------- 6) Header / Nav ---------------- */
+/* New thin white header design */
 header {
-  background-image: url('images/backgroundbanner.png');  /* Image background */
-  background-size: cover;
-  background-position: center;
-  color: white;                                           /* White text */
-  padding: 18px 0;                                          /* Vertical spacing */
-  box-shadow: var(--shadow);                                /* Subtle shadow for depth */
-  margin-bottom: 0;                                         /* Removes gap under header */
+  background: #ffffff;                                /* White background */
+  color: #545454;                                     /* Dark grey text color */
+  padding: 15px 0;                                    /* Minimal vertical padding for thin header */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);            /* Subtle shadow at bottom */
+  margin-bottom: 0;                                   /* No gap under header */
+  position: sticky;                                   /* Makes header stick to top when scrolling */
+  top: 0;                                            /* Sticks to the top of viewport */
+  z-index: 100;                                      /* Ensures header stays above other content */
 }
+
+/* Header container - holds all header elements */
 header .container {
   width: min(100% - 2*var(--spacing), var(--maxw));   /* Responsive width */
   margin: 0 auto;                                     /* Centers horizontally */
-  display: flex;                                      /* Aligns children horizontally */
-  gap: var(--spacing);                                /* Space between flex items */
-  align-items: center;                                /* Vertically centers items */
-  justify-content: space-between;                     /* Pushes items apart */
+  display: flex;                                      /* Flexbox layout for header items */
+  align-items: center;                                /* Vertically centers all items */
+  justify-content: space-between;                     /* Spreads items across the header */
 }
-header h1 {
-  width: min(100% - 2*var(--spacing), var(--maxw));   /* Responsive heading width */
-  margin: 32px auto;                                  /* Centers heading */
-  color: var(--head);                                 /* Special header colour */
+
+/* Page title styling - left side of header */
+header .page-title {
+  font-weight: 700;                                   /* Bold text */
+  font-size: 1.2rem;                                 /* Slightly larger font size */
+  text-transform: uppercase;                          /* Makes text all capitals */
+  color: #545454;                                     /* Dark grey color as specified */
+  margin: 0;                                          /* Remove default margin */
+  letter-spacing: 1px;                               /* Spacing between letters for better readability */
 }
+
+/* Ensure all headers (h1, h2, h3) on pages are capital, bold, and #545454 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;                                   /* Bold text for all headers */
+  text-transform: uppercase;                          /* Makes all headers capital letters */
+  color: #545454 !important;                         /* Dark grey color, !important to override other styles */
+  letter-spacing: 0.5px;                             /* Slight letter spacing for readability */
+}
+
+/* Vertical separator lines in header */
+.header-separator {
+  width: 1px;                                         /* Thin line */
+  height: 30px;                                       /* Height of the separator line */
+  background-color: #d9d9d9;                          /* Faint grey color as specified */
+  margin: 0 15px;                                     /* Space around the separator */
+}
+
+/* Right side of header - contains buttons */
+.header-right {
+  display: flex;                                      /* Flexbox for button layout */
+  align-items: center;                                /* Vertically center buttons */
+  gap: 0;                                            /* No gap - separators will provide spacing */
+}
+
+/* Header button styling - accessibility, search, and menu buttons */
+.header-btn {
+  background: none;                                   /* No background color */
+  border: none;                                       /* No border */
+  color: #545454;                                     /* Same color as title */
+  padding: 8px 12px;                                  /* Padding around button content */
+  cursor: pointer;                                    /* Pointer cursor on hover */
+  font-size: 0.9rem;                                 /* Slightly smaller font */
+  font-family: var(--font-body);                     /* Use Montserrat font */
+  transition: background-color 0.3s ease;            /* Smooth hover effect */
+}
+
+/* Hover effect for header buttons */
+.header-btn:hover {
+  background-color: #f5f5f5;                         /* Light grey background on hover */
+  border-radius: 4px;                                /* Slight rounding on hover */
+}
+
+/* Icon styling within header buttons */
+.header-btn i {
+  font-size: 1.1rem;                                 /* Slightly larger icons */
+}
+
+/* Header button icons - for accessibility and search icons */
+.header-btn img {
+  width: 18px;                                      /* Set icon width */
+  height: 18px;                                     /* Set icon height */
+  vertical-align: middle;                           /* Align with text */
+  margin-right: 4px;                                /* Space between icon and text (if any) */
+  opacity: 0.8;                                     /* Slightly transparent for better visual balance */
+  transition: opacity 0.3s ease;                   /* Smooth transition on hover */
+}
+
+/* Make icons more visible on hover */
+.header-btn:hover img {
+  opacity: 1;                                       /* Full opacity on hover */
+}
+
+/* Dark mode support - icons will be swapped via JavaScript instead of using filters */
+/* Mobile menu - hidden by default, shown when hamburger is clicked */
 nav {
-  background: #181818;             /* Dark grey background for nav bar */
+  background: #ffffff;             /* White background to match header */
   font-size: 0.95rem;             /* Slightly smaller font in navigation */
   width: 100%;                    /* Spans full width */
-  margin: 32px auto;              /* Space above page content; no top gap */
-  margin-top: 0;                  /* Removes top gap above nav */
+  margin: 0;                      /* No margin around nav */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+  display: none;                  /* Hidden by default - will show via JavaScript */
+  position: fixed;                /* Fixed position so it stays in place when scrolling */
+  top: 67px;                      /* Position right below the header (adjusted for proper spacing) */
+  left: 0;                        /* Align to left edge */
+  right: 0;                       /* Stretch to right edge */
+  z-index: 99;                    /* Below header but above content */
+  max-height: 400px;              /* Limit height so it doesn't take up whole screen */
+  overflow-y: auto;               /* Add scrolling if menu is too long */
 }
 nav .container {
   width: min(100% - 2*var(--spacing), var(--maxw));   /* Responsive container width */
@@ -146,6 +223,12 @@ nav a:focus-visible {
   outline: 2px solid #fff;              /* white outline for increased accessibility/ keyboard-focus styling */
   outline-offset: 2px;                    /* outline offset for increased accessibility/ keyboard-focus styling */
 }
+
+/* Mobile menu open state */
+nav.mobile-menu-open {
+  display: block !important;             /* Show the navigation when menu is open */
+}
+
 .active {
   background-color: grey;     /* Indicates active page link */
 }
@@ -369,11 +452,13 @@ button:hover, input[type="submit"]:hover {
 footer {
   margin-top: 40px;          /* Space above footer */
   padding: 22px 0;           /* Vertical spacing */
-  background: var(--brand);  /* Brand background */
-  color: #cfd7ff;          /* Light text colour */
+  background: #ffffff;       /* White background */
+  color: #737373;           /* Grey text colour as specified */
+  border-top: 1px solid #e0e0e0; /* Subtle top border to separate from content */
 }
 footer p {
-  color: white;     /* White paragraph text */
+  color: #737373;           /* Grey paragraph text as specified */
+  margin: 0;                /* Remove default margin for cleaner look */
 }
 footer .container {
   width: min(100% - 2*var(--spacing), var(--maxw));       /* Responsive width */
@@ -414,6 +499,1502 @@ footer .container {
 }
 .p-3 { 
   padding: 24px !important;     /* Large padding */
+}
+
+/* ---------- 12) Accessibility Popup ----------- */
+/* Accessibility popup - appears when accessibility button is clicked */
+.accessibility-popup {
+  position: fixed;                                   /* Fixed position so it stays in place when scrolling */
+  top: 75px;                                         /* Position below the header */
+  right: 20px;                                       /* Position 20px from the right edge of screen */
+  background: #ffffff;                               /* White background */
+  border: 1px solid #d9d9d9;                        /* Light grey border */
+  border-radius: var(--radius);                     /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);         /* Stronger shadow for popup */
+  padding: 20px;                                     /* Padding inside popup */
+  min-width: 250px;                                  /* Minimum width */
+  max-width: 300px;                                  /* Maximum width so it doesn't get too wide */
+  display: none;                                     /* Hidden by default - shown via JavaScript */
+  z-index: 101;                                      /* Above header */
+}
+
+/* Accessibility popup title */
+.accessibility-popup h3 {
+  margin: 0 0 15px 0;                               /* Margin below title */
+  color: #545454;                                   /* Same color as header text */
+  font-size: 1rem;                                 /* Normal font size */
+  text-transform: none;                             /* No uppercase transform */
+}
+
+/* Accessibility popup buttons */
+.accessibility-popup button {
+  display: block;                                   /* Each button on its own line */
+  width: 100%;                                      /* Full width of popup */
+  margin: 8px 0;                                    /* Vertical spacing between buttons */
+  padding: 10px;                                    /* Padding inside buttons */
+  background: #f5f5f5;                              /* Light grey background */
+  border: 1px solid #d9d9d9;                        /* Light grey border */
+  border-radius: 4px;                               /* Rounded corners */
+  cursor: pointer;                                  /* Pointer cursor */
+  font-family: var(--font-body);                   /* Montserrat font */
+  color: #545454;                                   /* Same color as header */
+  transition: background-color 0.3s ease;          /* Smooth hover effect */
+}
+
+/* Hover effect for accessibility popup buttons */
+.accessibility-popup button:hover {
+  background: #e8e8e8;                             /* Darker grey on hover */
+}
+
+/* ---------- 13) Mobile Menu Styles ----------- */
+/* When mobile menu is shown */
+nav.show {
+  display: block;                                   /* Show the navigation menu */
+}
+
+/* Mobile menu links */
+nav a {
+  display: block;                                   /* Each link on its own line */
+  padding: 15px 20px;                              /* Generous padding for touch targets */
+  color: #545454;                                  /* Same color as header */
+  text-decoration: none;                           /* No underlines */
+  border-bottom: 1px solid #f0f0f0;               /* Light separator between links */
+  transition: background-color 0.3s ease;         /* Smooth hover effect */
+}
+
+/* Hover effect for mobile menu links */
+nav a:hover {
+  background-color: #f5f5f5;                      /* Light grey background on hover */
+}
+
+/* Active link in mobile menu */
+nav a.active {
+  background-color: #545454;                       /* Dark background for active link */
+  color: #ffffff;                                  /* White text for active link */
+}
+
+/* ---------- 14) Font Size Classes ----------- */
+/* Classes for accessibility font size changes */
+.font-small, .font-small p, .font-small li, .font-small span, .font-small a {
+  font-size: 0.85rem !important;                  /* Smaller font size for all text elements */
+}
+
+.font-normal, .font-normal p, .font-normal li, .font-normal span, .font-normal a {
+  font-size: 1rem !important;                     /* Normal font size for all text elements */
+}
+
+.font-large, .font-large p, .font-large li, .font-large span, .font-large a {
+  font-size: 1.2rem !important;                   /* Larger font size for all text elements */
+}
+
+/* ---------- 15) Dark Mode Styles ----------- */
+/* Dark mode styles - applied when .dark-mode class is added to body */
+body.dark-mode {
+  background: #2c2c2c;                             /* Dark grey background */
+  color: #ffffff;                                  /* White text */
+}
+
+body.dark-mode main {
+  background: #3c3c3c;                             /* Darker grey for content card */
+  color: #ffffff;                                  /* White text */
+}
+
+body.dark-mode header {
+  background: #3c3c3c;                             /* Dark grey header */
+  color: #ffffff;                                  /* White text */
+}
+
+body.dark-mode .header-btn {
+  color: #ffffff;                                  /* White button text */
+  background-color: transparent;                   /* No background color for header buttons */
+  border: none;                                    /* No border for header buttons */
+}
+
+body.dark-mode .header-btn:hover {
+  background-color: #555555;                      /* Darker hover effect */
+}
+
+body.dark-mode .page-title {
+  color: #ffffff;                                  /* White title text */
+}
+
+body.dark-mode nav {
+  background: #3c3c3c;                             /* Dark navigation background */
+}
+
+body.dark-mode nav a {
+  color: #ffffff;                                  /* White navigation links */
+}
+
+body.dark-mode .accessibility-popup {
+  background: #3c3c3c;                             /* Dark popup background */
+  border-color: #555555;                          /* Darker border */
+}
+
+body.dark-mode .accessibility-popup h3 {
+  color: #ffffff;                                  /* White popup title */
+}
+
+body.dark-mode .accessibility-popup button {
+  background: #555555;                             /* Dark button background */
+  color: #ffffff;                                  /* White button text */
+  border-color: #666666;                          /* Darker border */
+}
+
+body.dark-mode .accessibility-popup button:hover {
+  background: #666666;                             /* Darker hover effect */
+}
+
+/* Dark mode footer styling */
+body.dark-mode footer {
+  background: #2a2a2a;                             /* Dark footer background */
+  color: #cccccc;                                  /* Light footer text for contrast */
+}
+
+/* Dark mode styling for content elements that were missing */
+body.dark-mode .section {
+  background: #3c3c3c;                             /* Dark section background */
+  color: #ffffff;                                  /* White text */
+}
+
+body.dark-mode .project-card {
+  background: #4a4a4a;                             /* Darker card background */
+  color: #ffffff;                                  /* White text */
+  border-color: #555555;                           /* Darker border */
+}
+
+body.dark-mode .info-card {
+  background: #4a4a4a;                             /* Darker card background */
+  color: #ffffff;                                  /* White text */
+  border-color: #555555;                           /* Darker border */
+}
+
+body.dark-mode .card {
+  background: #4a4a4a;                             /* Darker card background */
+  color: #ffffff;                                  /* White text */
+  border-color: #555555;                           /* Darker border */
+}
+
+body.dark-mode .profile {
+  background: #4a4a4a;                             /* Dark profile background */
+  color: #ffffff;                                  /* White text */
+}
+
+body.dark-mode .subject {
+  background: #4a4a4a;                             /* Dark subject background */
+  color: #ffffff;                                  /* White text */
+}
+
+body.dark-mode .table {
+  background: #4a4a4a;                             /* Dark table background */
+  color: #ffffff;                                  /* White text */
+}
+
+/* Dark mode for all text elements */
+body.dark-mode p {
+  color: #ffffff !important;                        /* White paragraph text, override any inline styles */
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5, 
+body.dark-mode h6 {
+  color: #ffffff !important;                        /* White headers, override the #545454 color rule */
+}
+
+body.dark-mode a {
+  color: #87CEEB;                                   /* Light blue links for better visibility */
+}
+
+body.dark-mode a:hover {
+  color: #ADD8E6;                                   /* Lighter blue on hover */
+}
+
+/* ---------- 15) Special Color Elements ----------- */
+/* Headers inside cards should be #5870a5 */
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6,
+.project-card h1, .project-card h2, .project-card h3, .project-card h4, .project-card h5, .project-card h6,
+.info-card h1, .info-card h2, .info-card h3, .info-card h4, .info-card h5, .info-card h6 {
+  color: #5870a5 !important;                        /* Blue color for card titles */
+}
+
+/* All buttons should be #5870a5 (except header buttons) */
+button:not(.header-btn), input[type="submit"], input[type="button"] {
+  background-color: #5870a5;                        /* Blue button background */
+  color: #ffffff;                                   /* White button text */
+  border: 1px solid #5870a5;                       /* Blue border */
+}
+
+button:not(.header-btn):hover, input[type="submit"]:hover, input[type="button"]:hover {
+  background-color: #4a5d94;                        /* Darker blue on hover */
+  border-color: #4a5d94;                           /* Darker blue border on hover */
+}
+
+/* Table styling with #5870a5 */
+table, th, td {
+  border-color: #5870a5;                           /* Blue table borders */
+}
+
+th {
+  background-color: #5870a5;                        /* Blue table header background */
+  color: #ffffff;                                   /* White table header text */
+}
+
+/* Dark mode adjustments for better contrast */
+body.dark-mode .card h1, body.dark-mode .card h2, body.dark-mode .card h3, 
+body.dark-mode .card h4, body.dark-mode .card h5, body.dark-mode .card h6,
+body.dark-mode .project-card h1, body.dark-mode .project-card h2, body.dark-mode .project-card h3, 
+body.dark-mode .project-card h4, body.dark-mode .project-card h5, body.dark-mode .project-card h6,
+body.dark-mode .info-card h1, body.dark-mode .info-card h2, body.dark-mode .info-card h3, 
+body.dark-mode .info-card h4, body.dark-mode .info-card h5, body.dark-mode .info-card h6 {
+  color: #87CEEB !important;                        /* Light blue for better dark mode visibility */
+}
+
+body.dark-mode button, body.dark-mode input[type="submit"], body.dark-mode input[type="button"] {
+  background-color: #87CEEB;                        /* Light blue button background for dark mode */
+  color: #2c2c2c;                                   /* Dark text for contrast */
+  border: 1px solid #87CEEB;                       /* Light blue border */
+}
+
+body.dark-mode button:hover, body.dark-mode input[type="submit"]:hover, body.dark-mode input[type="button"]:hover {
+  background-color: #ADD8E6;                        /* Even lighter blue on hover */
+  border-color: #ADD8E6;                           /* Lighter blue border on hover */
+}
+
+body.dark-mode table, body.dark-mode th, body.dark-mode td {
+  border-color: #87CEEB;                           /* Light blue table borders for dark mode */
+}
+
+body.dark-mode th {
+  background-color: #87CEEB;                        /* Light blue table header background for dark mode */
+  color: #2c2c2c;                                   /* Dark text for contrast */
+}
+
+/* ---------- 16) Graduation Countdown Styling ----------- */
+.countdown-section {
+  background: transparent;                          /* No background since it's inside the main card */
+  padding: 30px 20px 0 20px;                       /* Padding on all sides for better spacing */
+  text-align: center;                               /* Center align content */
+  margin: 40px auto 0 auto;                        /* Center the section and add top margin */
+  border-top: 1px solid #e0e0e0;                   /* Subtle separator line */
+  width: 100%;                                      /* Ensure full width */
+  max-width: 100%;                                  /* Prevent overflow */
+}
+
+.countdown-section h2 {
+  color: #5870a5;                                   /* Blue color for countdown title */
+  margin-bottom: 30px;                              /* Space below title */
+  font-size: 2rem;                                  /* Larger font size */
+  text-align: center;                               /* Center the heading */
+  width: 100%;                                      /* Full width to ensure centering */
+  display: block;                                   /* Ensure it's a block element */
+}
+
+.countdown-container {
+  display: flex;                                    /* Flexbox layout */
+  justify-content: center;                          /* Center the countdown items */
+  gap: 40px;                                        /* Space between countdown items */
+  margin-bottom: 20px;                              /* Space below countdown */
+  flex-wrap: wrap;                                  /* Allow wrapping on smaller screens */
+}
+
+.countdown-item {
+  display: flex;                                    /* Flexbox for number and label */
+  flex-direction: column;                           /* Stack number above label */
+  align-items: center;                              /* Center align items */
+  background: #ffffff;                              /* White background for countdown boxes */
+  padding: 20px;                                    /* Padding inside each box */
+  border-radius: 10px;                             /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);          /* Subtle shadow */
+  min-width: 100px;                                 /* Minimum width for consistency */
+}
+
+.countdown-number {
+  font-size: 6rem !important;                      /* Large font for countdown numbers - override accessibility */
+  font-weight: 700;                                 /* Bold font */
+  color: #5870a5;                                   /* Blue color for numbers */
+  line-height: 1;                                   /* Tight line height */
+}
+
+.countdown-label {
+  font-size: 1rem;                                  /* Normal font size for labels */
+  color: #545454;                                   /* Grey color for labels */
+  text-transform: uppercase;                        /* Uppercase labels */
+  font-weight: 600;                                 /* Semi-bold */
+  margin-top: 5px;                                  /* Small space above label */
+}
+
+.graduation-date {
+  color: #545454;                                   /* Grey color for graduation date */
+  font-size: 1.1rem;                                /* Slightly larger font */
+  font-style: italic;                               /* Italic text */
+}
+
+/* Dark mode styling for countdown */
+body.dark-mode .countdown-section {
+  background: transparent;                          /* No background in dark mode either */
+  border-top-color: #555555;                       /* Darker separator line for dark mode */
+}
+
+body.dark-mode .countdown-section h2 {
+  color: #87CEEB;                                   /* Light blue for dark mode */
+}
+
+body.dark-mode .countdown-item {
+  background: #4a4a4a;                              /* Dark background for countdown boxes */
+}
+
+body.dark-mode .countdown-number {
+  color: #87CEEB;                                   /* Light blue numbers for dark mode */
+}
+
+body.dark-mode .countdown-label {
+  color: #ffffff;                                   /* White labels for dark mode */
+}
+
+body.dark-mode .graduation-date {
+  color: #cccccc;                                   /* Light grey for graduation date */
+}
+
+/* Dark mode styles for index page layout */
+body.dark-mode .action-btn {
+  background: #87CEEB;                              /* Light blue background for dark mode */
+  color: #1a1a1a;                                   /* Dark text */
+  border-color: #87CEEB;                            /* Light blue border */
+}
+
+body.dark-mode .action-btn:hover {
+  background: #4a4a4a;                              /* Dark grey background on hover */
+  color: #87CEEB;                                   /* Light blue text on hover */
+  border-color: #87CEEB;                            /* Light blue border */
+}
+
+body.dark-mode .professional-sidebar {
+  background: #2a2a2a;                              /* Dark background for sidebar */
+  border-color: #555555;                            /* Darker border */
+}
+
+body.dark-mode .sidebar-title {
+  color: #87CEEB;                                   /* Light blue for title in dark mode */
+}
+
+body.dark-mode .sidebar-description {
+  color: #cccccc;                                   /* Light grey for description */
+}
+
+body.dark-mode .sidebar-separator {
+  background: #87CEEB;                              /* Light blue separator */
+}
+
+body.dark-mode .employment-card {
+  background: #3a3a3a;                              /* Dark background for employment cards */
+  border-color: #555555;                            /* Darker border */
+}
+
+body.dark-mode .employment-card h3 {
+  color: #87CEEB;                                   /* Light blue for job titles */
+}
+
+body.dark-mode .employment-company {
+  color: #cccccc;                                   /* Light grey for company names */
+}
+
+body.dark-mode .employment-date {
+  color: #aaaaaa;                                   /* Light grey for dates */
+}
+
+body.dark-mode .main-content {
+  background: #2a2a2a;                              /* Dark background for main content */
+  border-color: #555555;                            /* Darker border */
+}
+
+body.dark-mode .intro-text {
+  color: #cccccc;                                   /* Light grey for intro text */
+}
+
+body.dark-mode .education-description {
+  color: #cccccc;                                   /* Light grey for education description */
+}
+
+/* ---------- 17) Page Header Section Styling ----------- */
+.page-header-section {
+  display: flex;                                    /* Flexbox layout */
+  align-items: center;                              /* Vertically center items */
+  padding: 10px 0 0 0;                              /* Top padding only, no bottom padding */
+  margin-bottom: 0;                                 /* No bottom margin */
+  position: relative;                               /* For positioning the divider */
+}
+
+.page-main-title {
+  color: #5870a5;                                   /* Blue color for page title */
+  font-size: 2rem;                                  /* Large font size */
+  margin: 0;                                        /* Remove default margin */
+  font-weight: 700;                                 /* Bold font */
+  text-transform: uppercase;                        /* Uppercase text */
+  flex: 1;                                          /* Take remaining space */
+}
+
+.page-header-divider {
+  width: 1px;                                       /* Thin vertical line */
+  height: 90px;                                     /* Extended height to reach horizontal line */
+  background: #e0e0e0;                              /* Light grey line */
+  margin-right: 20px;                               /* Space only on the right side */
+  margin-bottom: -10px;                             /* Extend down to touch horizontal line */
+}
+
+.page-header-icon {
+  width: 80px;                                      /* Larger width for icon */
+  height: 80px;                                     /* Larger height for icon */
+  border-radius: 50%;                               /* Circular for profile picture */
+  object-fit: cover;                                /* Cover the area while maintaining aspect ratio */
+  border: 3px solid #5870a5;                       /* Thicker blue border around larger icon */
+  margin-right: 20px;                               /* Space from right edge of card */
+}
+
+.page-header-separator {
+  width: 100%;                                      /* Full width line */
+  height: 1px;                                      /* Thin line */
+  background: #e0e0e0;                              /* Light grey line */
+  margin: 20px 0 30px 0;                            /* 20px top margin to match vertical line spacing, 30px bottom */
+}
+
+/* Dark mode styling for page header */
+body.dark-mode .page-main-title {
+  color: #87CEEB;                                   /* Light blue for dark mode */
+}
+
+body.dark-mode .page-header-divider {
+  background: #555555;                              /* Darker line for dark mode */
+}
+
+body.dark-mode .page-header-icon {
+  border-color: #87CEEB;                            /* Light blue border for dark mode */
+}
+
+body.dark-mode .page-header-separator {
+  background: #555555;                              /* Darker separator line for dark mode */
+}
+
+/* ---------- 18) Video Styling ----------- */
+/* Responsive video container to maintain proper aspect ratio */
+.video-container {
+  position: relative;                                /* Relative positioning for absolute child */
+  width: 100%;                                       /* Full width of parent container */
+  max-width: 600px;                                  /* Maximum width to prevent video from getting too large */
+  margin: 20px auto;                                 /* Center the video with margin */
+  background: #000000;                               /* Black background like a video player */
+  border-radius: 8px;                                /* Rounded corners */
+  overflow: hidden;                                  /* Hide any overflow */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);          /* Shadow for depth */
+}
+
+/* Create responsive aspect ratio for videos (16:9 ratio) */
+.video-container::before {
+  content: '';                                       /* Empty content for pseudo-element */
+  display: block;                                    /* Block element */
+  padding-top: 56.25%;                               /* 56.25% = 9/16 = 16:9 aspect ratio */
+}
+
+/* Style the iframe to fill the container properly */
+.video-container iframe {
+  position: absolute;                                /* Position absolutely within container */
+  top: 0;                                           /* Align to top */
+  left: 0;                                          /* Align to left */
+  width: 100%;                                      /* Full width */
+  height: 100%;                                     /* Full height */
+  border: none;                                     /* Remove default border */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .video-container {
+    max-width: 100%;                                /* Full width on mobile */
+    margin: 15px 0;                                 /* Reduce margins on mobile */
+  }
+}
+
+/* ---------- 19) Index Page Layout ----------- */
+/* Action buttons section */
+.action-buttons {
+  display: flex;                                    /* Flex layout for buttons */
+  gap: 20px;                                        /* Space between buttons */
+  justify-content: center;                          /* Center the buttons */
+  margin: 25px 0;                                   /* Margin above and below */
+  flex-wrap: wrap;                                  /* Allow wrapping on smaller screens */
+}
+
+.action-btn {
+  background: #5870a5;                              /* Blue background */
+  color: #ffffff;                                   /* White text */
+  padding: 12px 24px;                               /* Button padding */
+  border-radius: 6px;                               /* Rounded corners */
+  text-decoration: none;                            /* Remove underline */
+  font-weight: 600;                                 /* Bold font */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  transition: all 0.3s ease;                       /* Smooth transition */
+  border: 2px solid #5870a5;                       /* Border same as background */
+}
+
+.action-btn:hover {
+  background: #ffffff;                              /* White background on hover */
+  color: #5870a5;                                   /* Blue text on hover */
+  transform: translateY(-2px);                     /* Slight lift effect */
+}
+
+/* Main layout with sidebar */
+.main-layout {
+  display: flex;                                    /* Flex layout */
+  gap: 30px;                                        /* Space between sidebar and content */
+  margin-top: 30px;                                 /* Space from action buttons */
+  align-items: flex-start;                          /* Align items to top */
+}
+
+/* Professional Summary Sidebar */
+.professional-sidebar {
+  width: 350px;                                     /* Fixed width for sidebar */
+  background: #ffffff;                              /* White background */
+  border-radius: 12px;                             /* Rounded corners */
+  padding: 20px;                                    /* Internal padding */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);         /* Subtle shadow */
+  border: 1px solid #e0e0e0;                       /* Light border */
+}
+
+.sidebar-banner {
+  width: 100%;                                      /* Full width of sidebar */
+  height: auto;                                     /* Maintain aspect ratio */
+  border-radius: 8px;                              /* Rounded corners */
+  margin-bottom: 20px;                             /* Space below image */
+}
+
+.sidebar-title {
+  color: #5870a5;                                   /* Blue color for title */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 700;                                 /* Bold font */
+  font-size: 1.4rem;                                /* Large font size */
+  margin-bottom: 15px;                              /* Space below title */
+  text-align: center;                               /* Center the title */
+}
+
+.sidebar-description {
+  color: #545454;                                   /* Grey color for description */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-size: 0.9rem;                                /* Smaller font size */
+  text-align: center;                               /* Center the text */
+  margin-bottom: 20px;                              /* Space below description */
+  font-weight: 600;                                 /* Semi-bold font */
+}
+
+.sidebar-separator {
+  height: 2px;                                      /* Height of separator line */
+  background: #5870a5;                              /* Blue color */
+  margin: 20px 0;                                   /* Margin above and below */
+  border-radius: 1px;                               /* Slightly rounded */
+}
+
+/* Employment Cards */
+.employment-cards {
+  display: flex;                                    /* Flex layout */
+  flex-direction: column;                           /* Stack cards vertically */
+  gap: 20px;                                        /* Space between cards */
+}
+
+.employment-card {
+  background: #f9f9f9;                              /* Light grey background */
+  border-radius: 8px;                               /* Rounded corners */
+  padding: 15px;                                    /* Internal padding */
+  border: 1px solid #e5e5e5;                       /* Light border */
+  transition: all 0.3s ease;                       /* Smooth transition */
+}
+
+.employment-card:hover {
+  transform: translateY(-3px);                     /* Lift effect on hover */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);        /* Enhanced shadow on hover */
+}
+
+.employment-image {
+  width: 100%;                                      /* Full width of the card */
+  height: 120px;                                    /* Fixed height for rectangle shape */
+  border-radius: 8px;                               /* Rounded corners */
+  object-fit: cover;                                /* Cover the area maintaining aspect ratio */
+  margin-bottom: 15px;                              /* Space below image */
+}
+
+.employment-card h3 {
+  color: #5870a5;                                   /* Blue color for job title */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 600;                                 /* Semi-bold font */
+  font-size: 1.1rem;                                /* Slightly larger font */
+  margin-bottom: 5px;                               /* Small space below title */
+}
+
+.employment-company {
+  color: #545454;                                   /* Grey color for company */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 500;                                 /* Medium font weight */
+  font-size: 0.95rem;                               /* Slightly smaller font */
+  margin-bottom: 3px;                               /* Small space below company */
+}
+
+.employment-date {
+  color: #737373;                                   /* Lighter grey for dates */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-size: 0.85rem;                               /* Smaller font for dates */
+  font-style: italic;                               /* Italic style */
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;                                          /* Take remaining space */
+  background: #ffffff;                              /* White background */
+  border-radius: 12px;                             /* Rounded corners */
+  padding: 30px;                                    /* Internal padding */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);         /* Subtle shadow */
+  border: 1px solid #e0e0e0;                       /* Light border */
+}
+
+.intro-text {
+  color: #545454;                                   /* Grey color for intro text */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-size: 1.1rem;                                /* Slightly larger font */
+  line-height: 1.6;                                 /* Good line spacing */
+  margin-bottom: 25px;                              /* Space below text */
+  text-align: center;                               /* Center the text */
+}
+
+.intro-image {
+  width: 100%;                                      /* Full width to match text width */
+  max-width: none;                                  /* Remove maximum width restriction */
+  height: auto;                                     /* Maintain aspect ratio */
+  border-radius: 8px;                              /* Rounded corners */
+  margin: 25px 0;                                   /* Margin above and below only */
+  display: block;                                   /* Block element */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);         /* Subtle shadow */
+}
+
+.education-description {
+  color: #545454;                                   /* Grey color for education text */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-size: 1rem;                                  /* Normal font size */
+  line-height: 1.6;                                 /* Good line spacing */
+  margin-bottom: 30px;                              /* Space below text */
+  text-align: justify;                              /* Justify text alignment */
+}
+
+/* Responsive Design for Index Layout */
+@media (max-width: 1024px) {
+  .main-layout {
+    flex-direction: column;                         /* Stack vertically on tablets */
+    gap: 20px;                                      /* Reduce gap */
+  }
+  
+  .professional-sidebar {
+    width: 100%;                                    /* Full width on tablets */
+    order: 2;                                       /* Move sidebar below content */
+  }
+  
+  .main-content {
+    order: 1;                                       /* Move content above sidebar */
+  }
+}
+
+@media (max-width: 768px) {
+  .action-buttons {
+    flex-direction: column;                         /* Stack buttons vertically on mobile */
+    align-items: center;                            /* Center buttons */
+    gap: 15px;                                      /* Reduce gap */
+  }
+  
+  .action-btn {
+    width: 200px;                                   /* Fixed width for mobile buttons */
+    text-align: center;                             /* Center text */
+  }
+  
+  .professional-sidebar {
+    padding: 15px;                                  /* Reduce padding on mobile */
+  }
+  
+  .main-content {
+    padding: 20px;                                  /* Reduce padding on mobile */
+  }
+  
+  .intro-text {
+    font-size: 1rem;                                /* Smaller font on mobile */
+  }
+}
+
+/* ---------- 21) Projects Page Layout ----------- */
+/* Project filter buttons */
+.project-filters {
+  display: flex;                                    /* Flex layout for filter buttons */
+  gap: 15px;                                        /* Space between buttons */
+  justify-content: center;                          /* Center the buttons */
+  margin-bottom: 30px;                              /* Space below filters */
+  flex-wrap: wrap;                                  /* Allow wrapping on smaller screens */
+}
+
+.filter-btn {
+  background: #ffffff !important;                  /* White background */
+  color: #5870a5 !important;                       /* Blue text */
+  border: 2px solid #5870a5;                       /* Blue border */
+  padding: 10px 20px;                               /* Button padding */
+  border-radius: 25px;                             /* Rounded pill shape */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 600;                                 /* Bold font */
+  cursor: pointer;                                  /* Pointer cursor */
+  transition: all 0.3s ease;                       /* Smooth transition */
+  font-size: 0.9rem;                                /* Slightly smaller font */
+}
+
+.filter-btn:hover {
+  background: #5870a5;                              /* Blue background on hover */
+  color: #ffffff;                                   /* White text on hover */
+  transform: translateY(-2px);                     /* Slight lift effect */
+}
+
+.filter-btn.active {
+  background: #5870a5 !important;                  /* Blue background when active */
+  color: #ffffff !important;                       /* White text when active */
+}
+
+/* Projects container */
+.projects-container {
+  display: flex;                                    /* Flexbox layout for better centering */
+  flex-wrap: wrap;                                  /* Allow cards to wrap to new lines */
+  justify-content: center;                          /* Center the project cards horizontally */
+  gap: 25px;                                        /* Space between project cards */
+  margin-top: 20px;                                 /* Space above projects */
+}
+
+.project-card {
+  background: #ffffff;                              /* White background */
+  border-radius: 12px;                             /* Rounded corners */
+  padding: 20px;                                    /* Internal padding */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);         /* Subtle shadow */
+  border: 1px solid #e0e0e0;                       /* Light border */
+  transition: all 0.3s ease;                       /* Smooth transition */
+  opacity: 1;                                       /* Full opacity by default */
+  transform: scale(1);                              /* Normal scale */
+  width: 320px;                                     /* Fixed width for consistent sizing */
+  flex-shrink: 0;                                   /* Prevent shrinking */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);                     /* Lift effect on hover */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);        /* Enhanced shadow on hover */
+}
+
+.project-card.hidden {
+  display: none !important;                        /* Completely hidden when filtered out */
+}
+
+.project-card img {
+  width: 100%;                                      /* Full width of card */
+  height: 360px;                                    /* Increased height for better display */
+  object-fit: cover;                                /* Cover the area maintaining aspect ratio */
+  object-position: center;                          /* Center the image within the frame */
+  border-radius: 8px;                              /* Rounded corners */
+  margin-bottom: 15px;                              /* Space below image */
+  display: block;                                   /* Block display to prevent inline spacing */
+}
+
+.project-card h3 {
+  color: #5870a5;                                   /* Blue color for project titles */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 600;                                 /* Semi-bold font */
+  font-size: 1.2rem;                                /* Slightly larger font */
+  margin-bottom: 10px;                              /* Space below title */
+}
+
+.project-card p {
+  color: #545454;                                   /* Grey color for description */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  line-height: 1.5;                                 /* Good line spacing */
+  margin: 0;                                        /* Remove default margin */
+}
+
+/* Dark mode styles for projects page */
+body.dark-mode .filter-btn {
+  background: #2a2a2a;                              /* Dark background */
+  color: #87CEEB;                                   /* Light blue text */
+  border-color: #87CEEB;                            /* Light blue border */
+}
+
+body.dark-mode .filter-btn:hover {
+  background: #87CEEB;                              /* Light blue background on hover */
+  color: #1a1a1a;                                   /* Dark text on hover */
+}
+
+body.dark-mode .filter-btn.active {
+  background: #87CEEB;                              /* Light blue background when active */
+  color: #1a1a1a;                                   /* Dark text when active */
+}
+
+body.dark-mode .project-card {
+  background: #2a2a2a;                              /* Dark background */
+  border-color: #555555;                            /* Darker border */
+}
+
+body.dark-mode .project-card h3 {
+  color: #87CEEB;                                   /* Light blue for titles */
+}
+
+body.dark-mode .project-card p {
+  color: #cccccc;                                   /* Light grey for text */
+}
+
+/* Responsive design for projects page */
+@media (max-width: 768px) {
+  .project-filters {
+    flex-direction: column;                         /* Stack filters vertically on mobile */
+    align-items: center;                            /* Center filters */
+    gap: 10px;                                      /* Reduce gap */
+  }
+  
+  .filter-btn {
+    width: 200px;                                   /* Fixed width on mobile */
+  }
+  
+  .projects-container {
+    grid-template-columns: 1fr;                     /* Single column on mobile */
+    gap: 20px;                                      /* Reduce gap */
+  }
+}
+
+/* ---------- 20) About Page Layout ----------- */
+/* About page sections */
+.about-section {
+  background: #ffffff;                              /* White background */
+  border-radius: 12px;                             /* Rounded corners */
+  padding: 30px;                                    /* Internal padding */
+  margin-bottom: 30px;                              /* Space between sections */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);         /* Subtle shadow */
+  border: 1px solid #e0e0e0;                       /* Light border */
+}
+
+/* Section headers with title and button */
+.section-header {
+  display: flex;                                    /* Flex layout */
+  justify-content: space-between;                   /* Space between title and button */
+  align-items: center;                              /* Vertically center items */
+  margin-bottom: 20px;                              /* Space below header */
+  flex-wrap: wrap;                                  /* Allow wrapping on mobile */
+  gap: 15px;                                        /* Gap between items when wrapped */
+}
+
+.section-title {
+  color: #5870a5;                                   /* Blue color for titles */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 700;                                 /* Bold font */
+  font-size: 1.8rem;                                /* Large font size */
+  margin: 0;                                        /* Remove default margin */
+}
+
+.section-title-centered {
+  color: #5870a5;                                   /* Blue color for titles */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 700;                                 /* Bold font */
+  font-size: 1.8rem;                                /* Large font size */
+  text-align: center;                               /* Center the title */
+  margin-bottom: 25px;                              /* Space below title */
+}
+
+.section-btn {
+  background: #5870a5;                              /* Blue background */
+  color: #ffffff;                                   /* White text */
+  padding: 10px 20px;                               /* Button padding */
+  border-radius: 6px;                               /* Rounded corners */
+  text-decoration: none;                            /* Remove underline */
+  font-weight: 600;                                 /* Bold font */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  transition: all 0.3s ease;                       /* Smooth transition */
+  border: 2px solid #5870a5;                       /* Border same as background */
+  font-size: 0.9rem;                                /* Slightly smaller font */
+}
+
+.section-btn:hover {
+  background: #ffffff;                              /* White background on hover */
+  color: #5870a5;                                   /* Blue text on hover */
+  transform: translateY(-2px);                     /* Slight lift effect */
+}
+
+.section-text {
+  color: #545454;                                   /* Grey color for text */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-size: 1rem;                                  /* Normal font size */
+  line-height: 1.6;                                 /* Good line spacing */
+  text-align: justify;                              /* Justify text alignment */
+  margin-bottom: 20px;                              /* Space below text */
+}
+
+.section-image {
+  width: 100%;                                      /* Full width */
+  height: 350px;                                    /* Fixed height to crop the image */
+  object-fit: cover;                                /* Crop to fit maintaining aspect ratio */
+  border-radius: 8px;                              /* Rounded corners */
+  margin-top: 20px;                                 /* Space above image */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);         /* Subtle shadow */
+}
+
+/* Dual images layout */
+.dual-images {
+  display: flex;                                    /* Flex layout */
+  gap: 20px;                                        /* Space between images */
+  margin-top: 20px;                                 /* Space above images */
+}
+
+.dual-image {
+  flex: 1;                                          /* Equal width for both images */
+  height: 250px;                                    /* Fixed height to prevent stretching */
+  object-fit: cover;                                /* Cover the area maintaining aspect ratio */
+  border-radius: 8px;                              /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);         /* Subtle shadow */
+}
+
+/* Subject cards layout */
+.subject-cards {
+  display: flex;                                    /* Flex layout */
+  gap: 20px;                                        /* Space between cards */
+  justify-content: center;                          /* Center the cards */
+  flex-wrap: wrap;                                  /* Allow wrapping */
+}
+
+.subject-card {
+  background: #f9f9f9;                              /* Light grey background */
+  border-radius: 12px;                             /* Rounded corners */
+  padding: 20px;                                    /* Internal padding */
+  text-align: center;                               /* Center content */
+  flex: 1;                                          /* Equal width */
+  min-width: 200px;                                 /* Minimum width */
+  max-width: 250px;                                 /* Maximum width */
+  border: 1px solid #e5e5e5;                       /* Light border */
+  transition: all 0.3s ease;                       /* Smooth transition */
+}
+
+.subject-card:hover {
+  transform: translateY(-5px);                     /* Lift effect on hover */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);        /* Enhanced shadow on hover */
+}
+
+.subject-image {
+  width: 100%;                                      /* Full width of card */
+  height: 150px;                                    /* Fixed height */
+  object-fit: cover;                                /* Cover the area */
+  border-radius: 8px;                              /* Rounded corners */
+  margin-bottom: 15px;                              /* Space below image */
+}
+
+.subject-title {
+  color: #5870a5;                                   /* Blue color for subject titles */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 600;                                 /* Semi-bold font */
+  font-size: 1.2rem;                                /* Slightly larger font */
+  margin: 0;                                        /* Remove default margin */
+}
+
+/* Table styling */
+.table-container {
+  overflow-x: auto;                                 /* Allow horizontal scrolling on mobile */
+  margin-top: 20px;                                 /* Space above table */
+}
+
+.practicum-table {
+  width: 100%;                                      /* Full width */
+  border-collapse: collapse;                        /* Collapse borders */
+  background: #ffffff;                              /* White background */
+  border-radius: 8px;                              /* Rounded corners */
+  overflow: hidden;                                 /* Hide overflow for rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);         /* Subtle shadow */
+}
+
+.practicum-table th {
+  background: #5870a5;                              /* Blue background for headers */
+  color: #ffffff;                                   /* White text */
+  padding: 15px;                                    /* Cell padding */
+  text-align: left;                                 /* Left align text */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 600;                                 /* Semi-bold font */
+}
+
+.practicum-table td {
+  padding: 15px;                                    /* Cell padding */
+  border-bottom: 1px solid #e5e5e5;               /* Light border between rows */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  color: #545454;                                   /* Grey text color */
+}
+
+.practicum-table tbody tr:hover {
+  background: #f9f9f9;                              /* Light grey background on hover */
+}
+
+.practicum-table tbody tr:last-child td {
+  border-bottom: none;                              /* Remove border from last row */
+}
+
+/* Quiz styling */
+.quiz-toggle-btn {
+  background: #5870a5;                              /* Blue background */
+  color: #ffffff;                                   /* White text */
+  padding: 15px 30px;                               /* Button padding */
+  border: none;                                     /* Remove border */
+  border-radius: 8px;                              /* Rounded corners */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 600;                                 /* Bold font */
+  font-size: 1.1rem;                                /* Slightly larger font */
+  cursor: pointer;                                  /* Pointer cursor */
+  transition: all 0.3s ease;                       /* Smooth transition */
+  display: block;                                   /* Block element */
+  margin: 0 auto 20px auto;                        /* Center and add bottom margin */
+}
+
+.quiz-toggle-btn:hover {
+  background: #4a5d94;                              /* Darker blue on hover */
+  transform: translateY(-2px);                     /* Slight lift effect */
+}
+
+.quiz-container {
+  background: #f9f9f9;                              /* Light grey background */
+  border-radius: 8px;                              /* Rounded corners */
+  padding: 25px;                                    /* Internal padding */
+  margin-top: 20px;                                 /* Space above container */
+  border: 1px solid #e5e5e5;                       /* Light border */
+}
+
+.quiz-question {
+  margin-bottom: 25px;                              /* Space between questions */
+}
+
+.quiz-question h3 {
+  color: #5870a5;                                   /* Blue color for questions */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 600;                                 /* Semi-bold font */
+  margin-bottom: 15px;                              /* Space below question */
+}
+
+.quiz-options {
+  display: flex;                                    /* Flex layout */
+  flex-direction: column;                           /* Stack options vertically */
+  gap: 10px;                                        /* Space between options */
+}
+
+.quiz-option {
+  background: #ffffff;                              /* White background */
+  border: 2px solid #e5e5e5;                       /* Light border */
+  border-radius: 6px;                              /* Rounded corners */
+  padding: 12px 15px;                               /* Button padding */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  color: #545454;                                   /* Grey text */
+  cursor: pointer;                                  /* Pointer cursor */
+  transition: all 0.3s ease;                       /* Smooth transition */
+  text-align: left;                                 /* Left align text */
+}
+
+.quiz-option:hover {
+  border-color: #5870a5;                            /* Blue border on hover */
+  background: #f0f4ff;                              /* Light blue background on hover */
+}
+
+.quiz-option.selected {
+  background: #2c2c2c !important;                   /* Dark background when selected */
+  color: #ffffff !important;                        /* White text when selected */
+  border-color: #2c2c2c !important;                 /* Dark border when selected */
+}
+
+.quiz-submit-btn {
+  background: #5870a5;                              /* Blue background */
+  color: #ffffff;                                   /* White text */
+  padding: 12px 25px;                               /* Button padding */
+  border: none;                                     /* Remove border */
+  border-radius: 6px;                              /* Rounded corners */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 600;                                 /* Bold font */
+  cursor: pointer;                                  /* Pointer cursor */
+  transition: all 0.3s ease;                       /* Smooth transition */
+  display: block;                                   /* Block element */
+  margin: 20px auto;                                /* Center with margin */
+}
+
+.quiz-submit-btn:hover {
+  background: #4a5d94;                              /* Darker blue on hover */
+}
+
+.quiz-result {
+  background: #e8f5e8;                              /* Light green background */
+  border: 2px solid #5cb85c;                       /* Green border */
+  border-radius: 8px;                              /* Rounded corners */
+  padding: 20px;                                    /* Internal padding */
+  text-align: center;                               /* Center text */
+  margin-top: 20px;                                 /* Space above result */
+}
+
+.quiz-result h3 {
+  color: #5cb85c;                                   /* Green color for result title */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  margin-bottom: 10px;                              /* Space below title */
+}
+
+.quiz-result p {
+  color: #2d5f2d;                                   /* Dark green for result text */
+  font-family: 'Montserrat', sans-serif;           /* Montserrat font */
+  font-weight: 500;                                 /* Medium font weight */
+  line-height: 1.5;                                 /* Good line spacing */
+}
+
+/* Dark mode styles for about page */
+body.dark-mode .about-section {
+  background: #2a2a2a;                              /* Dark background */
+  border-color: #555555;                            /* Darker border */
+}
+
+body.dark-mode .section-title,
+body.dark-mode .section-title-centered {
+  color: #87CEEB;                                   /* Light blue for titles */
+}
+
+body.dark-mode .section-btn {
+  background: #87CEEB;                              /* Light blue background */
+  color: #1a1a1a;                                   /* Dark text */
+  border-color: #87CEEB;                            /* Light blue border */
+}
+
+body.dark-mode .section-btn:hover {
+  background: #4a4a4a;                              /* Dark grey background on hover */
+  color: #87CEEB;                                   /* Light blue text on hover */
+}
+
+body.dark-mode .section-text {
+  color: #cccccc;                                   /* Light grey for text */
+}
+
+body.dark-mode .subject-card {
+  background: #3a3a3a;                              /* Dark background for cards */
+  border-color: #555555;                            /* Darker border */
+}
+
+body.dark-mode .subject-title {
+  color: #87CEEB;                                   /* Light blue for subject titles */
+}
+
+body.dark-mode .practicum-table th {
+  background: #87CEEB;                              /* Light blue background for headers */
+  color: #1a1a1a;                                   /* Dark text */
+}
+
+body.dark-mode .practicum-table {
+  background: #2a2a2a;                              /* Dark background for table */
+}
+
+body.dark-mode .practicum-table td {
+  color: #cccccc;                                   /* Light grey text */
+  border-bottom-color: #555555;                    /* Darker border */
+}
+
+body.dark-mode .practicum-table tbody tr:hover {
+  background: #3a3a3a;                              /* Darker background on hover */
+}
+
+body.dark-mode .quiz-toggle-btn {
+  background: #87CEEB;                              /* Light blue background */
+  color: #1a1a1a;                                   /* Dark text */
+}
+
+body.dark-mode .quiz-toggle-btn:hover {
+  background: #5a9ceb;                              /* Darker light blue on hover */
+}
+
+body.dark-mode .quiz-container {
+  background: #3a3a3a;                              /* Dark background */
+  border-color: #555555;                            /* Darker border */
+}
+
+body.dark-mode .quiz-question h3 {
+  color: #87CEEB;                                   /* Light blue for questions */
+}
+
+body.dark-mode .quiz-option {
+  background: #2a2a2a;                              /* Dark background */
+  border-color: #555555;                            /* Darker border */
+  color: #cccccc;                                   /* Light grey text */
+}
+
+body.dark-mode .quiz-option:hover {
+  border-color: #87CEEB;                            /* Light blue border on hover */
+  background: #4a4a4a;                              /* Darker background on hover */
+}
+
+body.dark-mode .quiz-option.selected {
+  background: #1a1a1a !important;                   /* Very dark background when selected */
+  color: #ffffff !important;                        /* White text when selected */
+  border-color: #1a1a1a !important;                 /* Dark border when selected */
+}
+
+body.dark-mode .quiz-submit-btn {
+  background: #87CEEB;                              /* Light blue background */
+  color: #1a1a1a;                                   /* Dark text */
+}
+
+body.dark-mode .quiz-result {
+  background: #2d5f2d;                              /* Dark green background */
+  border-color: #5cb85c;                            /* Green border */
+}
+
+body.dark-mode .quiz-result h3 {
+  color: #90ee90;                                   /* Light green for result title */
+}
+
+body.dark-mode .quiz-result p {
+  color: #cccccc;                                   /* Light grey for result text */
+}
+
+/* Responsive design for about page */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 20px;                                  /* Reduce padding on mobile */
+  }
+  
+  .section-header {
+    flex-direction: column;                         /* Stack title and button vertically */
+    align-items: flex-start;                        /* Align to left */
+  }
+  
+  .section-title {
+    font-size: 1.5rem;                              /* Smaller font on mobile */
+  }
+  
+  .section-title-centered {
+    font-size: 1.5rem;                              /* Smaller font on mobile */
+  }
+  
+  .dual-images {
+    flex-direction: column;                         /* Stack images vertically on mobile */
+  }
+  
+  .subject-cards {
+    flex-direction: column;                         /* Stack cards vertically on mobile */
+  }
+  
+  .subject-card {
+    max-width: none;                                /* Remove max width on mobile */
+  }
+  
+  .quiz-options {
+    gap: 8px;                                       /* Reduce gap on mobile */
+  }
+}
+
+/* ========== STUDENT MARK CONVERTER STYLES ========== */
+.converter-container {
+  background: #f8f9fa;                             /* Light background */
+  padding: 25px;                                   /* Internal spacing */
+  border-radius: 10px;                            /* Rounded corners */
+  border: 1px solid #e0e0e0;                      /* Light border */
+  margin-top: 15px;                               /* Space above container */
+}
+
+.input-group {
+  display: flex;                                   /* Horizontal layout */
+  flex-direction: column;                          /* Stack vertically */
+  gap: 15px;                                       /* Space between elements */
+  margin-bottom: 20px;                            /* Space below input group */
+}
+
+.input-group label {
+  font-family: 'Montserrat', sans-serif;          /* Montserrat font */
+  font-weight: 600;                               /* Bold font */
+  color: var(--secondary-color);                   /* Secondary color */
+  font-size: 1.1rem;                              /* Slightly larger font */
+}
+
+#mark-input {
+  padding: 12px 15px;                             /* Internal padding */
+  border: 2px solid #e0e0e0;                      /* Light border */
+  border-radius: 8px;                             /* Rounded corners */
+  font-family: 'Montserrat', sans-serif;          /* Montserrat font */
+  font-size: 1rem;                                /* Standard font size */
+  width: 300px;                                   /* Increased width */
+  transition: border-color 0.3s ease;             /* Smooth border transition */
+}
+
+#mark-input:focus {
+  outline: none;                                   /* Remove default outline */
+  border-color: var(--blue-color);                /* Blue border on focus */
+  box-shadow: 0 0 0 3px rgba(88, 112, 165, 0.1); /* Subtle blue glow */
+}
+
+.convert-btn {
+  background-color: var(--blue-color);            /* Blue background */
+  color: white;                                    /* White text */
+  border: none;                                    /* Remove border */
+  padding: 12px 25px;                             /* Internal padding */
+  border-radius: 8px;                             /* Rounded corners */
+  font-family: 'Montserrat', sans-serif;          /* Montserrat font */
+  font-weight: 600;                               /* Bold font */
+  font-size: 1rem;                                /* Standard font size */
+  cursor: pointer;                                 /* Pointer cursor */
+  transition: all 0.3s ease;                      /* Smooth transition */
+  width: fit-content;                             /* Width to fit content */
+}
+
+.convert-btn:hover {
+  background-color: #4a5d94;                      /* Darker blue on hover */
+  transform: translateY(-2px);                    /* Slight lift effect */
+}
+
+.results-container {
+  background: white;                               /* White background */
+  border: 1px solid #e0e0e0;                      /* Light border */
+  border-radius: 8px;                             /* Rounded corners */
+  padding: 20px;                                   /* Internal padding */
+  margin-top: 15px;                               /* Space above results */
+}
+
+.result-item {
+  display: flex;                                   /* Horizontal layout */
+  justify-content: space-between;                  /* Space between label and value */
+  align-items: center;                             /* Center vertically */
+  padding: 10px 0;                                /* Vertical padding */
+  border-bottom: 1px solid #f0f0f0;               /* Light separator line */
+  font-family: 'Montserrat', sans-serif;          /* Montserrat font */
+}
+
+.result-item:last-child {
+  border-bottom: none;                             /* Remove border from last item */
+}
+
+.result-item strong {
+  color: var(--secondary-color);                   /* Secondary color for labels */
+  font-weight: 600;                               /* Bold font */
+}
+
+.result-item span {
+  color: var(--blue-color);                       /* Blue color for values */
+  font-weight: 500;                               /* Medium font weight */
+}
+
+/* Dark mode styles for mark converter */
+body.dark-mode .converter-container {
+  background: #2a2a2a;                            /* Dark background */
+  border-color: #404040;                          /* Darker border */
+}
+
+body.dark-mode #mark-input {
+  background: #333333;                            /* Dark input background */
+  border-color: #404040;                          /* Dark border */
+  color: white;                                    /* White text */
+}
+
+body.dark-mode #mark-input:focus {
+  border-color: #87CEEB;                          /* Light blue border in dark mode */
+  box-shadow: 0 0 0 3px rgba(135, 206, 235, 0.1); /* Light blue glow */
+}
+
+body.dark-mode .results-container {
+  background: #333333;                            /* Dark results background */
+  border-color: #404040;                          /* Dark border */
+}
+
+body.dark-mode .result-item {
+  border-bottom-color: #404040;                   /* Dark separator */
+}
+
+/* ========== RESUME PAGE STYLES ========== */
+.resume-download {
+  text-align: center;                              /* Center the resume content */
+  margin: 20px 0;                                  /* Vertical spacing */
+}
+
+.resume-download a {
+  display: inline-block;                           /* Inline block for better control */
+  transition: transform 0.3s ease;                /* Smooth transform transition */
+  border-radius: 10px;                           /* Rounded corners */
+  overflow: hidden;                               /* Hide overflow for rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);       /* Subtle shadow */
+}
+
+.resume-download a:hover {
+  transform: translateY(-5px);                    /* Lift effect on hover */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);      /* Enhanced shadow on hover */
+}
+
+.resume-download img {
+  border-radius: 10px;                           /* Rounded corners for image */
+  transition: all 0.3s ease;                     /* Smooth transition */
+}
+
+.resume-download figcaption {
+  margin-top: 15px;                              /* Space above caption */
+  font-family: 'Montserrat', sans-serif;         /* Montserrat font */
+  font-size: 1.1rem;                             /* Slightly larger font */
+  color: var(--secondary-color);                  /* Secondary color */
+  font-weight: 500;                              /* Medium font weight */
+}
+
+.resume-download figcaption strong {
+  color: var(--blue-color);                      /* Blue color for emphasis */
+  font-weight: 600;                              /* Bold font */
+}
+
+/* Dark mode styles for resume page */
+body.dark-mode .resume-download figcaption {
+  color: #e0e0e0;                                /* Light text in dark mode */
+}
+
+body.dark-mode .resume-download figcaption strong {
+  color: #87CEEB;                                /* Light blue in dark mode */
+}
+
+/* ========== SOCIAL MEDIA STYLES ========== */
+.social-icon {
+  width: 24px;                                   /* Fixed width for icon */
+  height: 24px;                                  /* Fixed height for icon */
+  margin-right: 10px;                            /* Space between icon and text */
+  vertical-align: middle;                        /* Align with text */
+  transition: transform 0.3s ease;              /* Smooth transition */
+}
+
+.social-media-section ul {
+  list-style: none;                              /* Remove bullet points */
+  padding: 0;                                    /* Remove padding */
+  margin: 0;                                     /* Remove margin */
+}
+
+.social-media-section li {
+  margin-bottom: 15px;                           /* Space between social links */
+}
+
+.social-media-section a {
+  display: flex;                                 /* Flexbox for icon alignment */
+  align-items: center;                           /* Center vertically */
+  text-decoration: none;                         /* Remove underline */
+  color: var(--blue-color);                     /* Blue color for links */
+  font-family: 'Montserrat', sans-serif;        /* Montserrat font */
+  font-weight: 500;                             /* Medium font weight */
+  font-size: 1.1rem;                            /* Slightly larger font */
+  transition: all 0.3s ease;                    /* Smooth transition */
+  padding: 10px;                                /* Padding for better click area */
+  border-radius: 8px;                           /* Rounded corners */
+  width: fit-content;                           /* Width to fit content */
+}
+
+.social-media-section a:hover {
+  color: #4a5d94;                               /* Darker blue on hover */
+  background-color: rgba(88, 112, 165, 0.1);    /* Light blue background on hover */
+  transform: translateX(5px);                    /* Slight move to right on hover */
+}
+
+.social-media-section a:hover .social-icon {
+  transform: scale(1.1);                         /* Slightly larger icon on hover */
+}
+
+/* Dark mode styles for social media */
+body.dark-mode .social-media-section a {
+  color: #87CEEB;                               /* Light blue in dark mode */
+}
+
+body.dark-mode .social-media-section a:hover {
+  color: #B0E0E6;                               /* Lighter blue on hover in dark mode */
+  background-color: rgba(135, 206, 235, 0.1);   /* Light blue background in dark mode */
 }
 
 /* End of starter.css */

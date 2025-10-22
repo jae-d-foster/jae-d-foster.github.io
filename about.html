@@ -5,104 +5,207 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jae's Teaching Portfolio - About Me</title>
   <link rel="stylesheet" href="starter.css">
+  <!-- Link to our JavaScript file for interactive functionality -->
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- This is a heading about me that is coloured blue and has Arial Font -->
+  <!-- New thin white header with page title and interactive buttons -->
   <header>
-    <h1>About Me</h1>
-  </header>
-  <!-- Navigation menu section -->
-  <nav>
-      <div class="container">
-          <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a class="active" href="about.html">About</a></li>
-              <li><a href="projects.html">Project Showcase</a></li>
-              <li><a href="worksamples.html">Samples of Work</a></li>
-              <li><a href="resources.html">Resources</a></li>
-              <li><a href="resume.html">Resume</a></li>
-              <li><a href="contact.html">Contact Me</a></li>
-          </ul>
-      </div>
-  </nav>
-  <!-- This is the main conent area for my page -->
-  <main>
-  <!-- My name, University, University Degree Link and profile picture -->
-  <section>
-    <article class="profile">
-      <div class="profile-text">
-        <h2 style="font-family: 'Arial';">Jae Foster</h2>
-        <h3 style="font-family: 'Arial';"><i>Australian Catholic University</i></h3>
-        <!-- Link to ACU D&T degree website -->
-        <a style="font-family: 'arial';"href="https://www.acu.edu.au/course/bachelor-of-education-secondarybachelor-of-arts-design-innovation-and-technologies" target="_blank">Bachelor of Education (Secondary)/Bachelor of Arts (Design Innovation and Technologies)</a>
-        <p style="font-family: 'Arial';"> Hi, my name is Jae Foster and I’m currently studying to become a high school TAS teacher. I have a passion for design, technology, and helping others learn in creative and hands-on ways. I’m also a Student Learning Support Officer, where I work closely with students of all abilities to support their educational and emotional needs in the classroom. Finally, I am a NSW Department of Education Scholarship recipient for the teach.Rural scholarship.</p>
-      </div>
-      <div class="profile-photo">
-        <img src="images/profilepicture.png" alt="circle-shaped profile picture of Jae Foster">
-      </div>
-    </article>
-    <!-- Paragraph 1 about me -->
-    <article class="subject">
-      <div class="subject-text">
-        <h2>My Favourite Subjects Are:</h2>
-        <ul>
-          <li style="font-family: 'Arial';">Woodwork</li>
-          <li style="font-family: 'Arial';">Design & Technology</li>
-          <li style="font-family: 'Arial';">Computing</li>
-        </ul>
-      </div>
-      <div class="subject-image">
-        <img src="images/subjectdisplaytiles.png" alt="Three favourite subject dispay tiles" width="500">
-      </div>
-    </article>
-    <!-- Paragraph 2 about me -->
-    <h2>Background Information</h2>
-    <p style="font-family: 'Arial';"> Outside of university and school, I run my own tutoring business, where I support students in Maths, English, and assignment planning. I enjoy creating interactive learning tools and games that make education fun and accessible for everyone. I believe in building strong relationships with students and making learning feel engaging, relevant, and achievable.</p>
-  </section>
-  <!-- This section is my practicum placement overview in a table format -->
-  <section class="table">
-    <h2>Practicum Placement Overview</h2>
-    <table style="font-family: 'Arial';">
-      <thead>
-        <tr>
-          <th>School</th>
-          <th>Subjects Taught</th>
-          <th>Year Level</th>
-          <th>Term</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Chatswood High School</td>
-          <td>Stage 4 & 5 Digital Technologies</td>
-          <td>Years 7 & 9</td>
-          <td>Term 2, 2024</td>
-        </tr>
-            <tr>
-          <td>Ku-ring-Gai High School</td>
-          <td>Stage 5 Food Technology, Stage 5 Industrial Technology - Timber</td>
-          <td>Years 7 & 9</td>
-          <td>Term 4, 2024</td>
-        </tr>
-            <tr>
-          <td>Armidale Secondary College</td>
-          <td>Stage 4 Digital Technologies, Stage 5 & 6 Industrial Technology Timber</td>
-          <td>Years 7, 9, 10 & 12</td>
-          <td>Term 2-3, 2025</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-  <!-- This is the section for my Teaching Philosophy -->
-        <section>
-            <h2>My Teaching Philosophy</h2>
-            <p>As a future teacher, I believe that all students are capable of growth when they feel safe, respected, and meaningfully engaged. My classroom management philosophy is built around the belief that behaviour is a form of communication, and that creating a predictable, inclusive, and relational environment is absolutely essential for promoting both wellbeing and academic success. I see my role as a teacher, as not only an instructor but also a facilitator of positive peer relationships, a model of respectful interactions, and a dedicated support for diverse student needs. My approach is built around the incorporation of Positive Behaviour Support (PBS), Bill Rogers’ Eclectic Model of Decisive Discipline, and elements of Choice Theory. These frameworks work along side one another in promoting proactive, structured, and student-centred behaviour support. PBS provides a tiered model for promoting positive behaviour and responding to misbehaviour with consistency and equity, while Rogers’ model adds practical strategies for maintaining calm authority and respectful correction to behaviour. Choice Theory informs my focus on student agency, which helps learners understand the link between their choices and consequences in a supportive way. Together, these models support the development of safe, engaging classrooms that ultimately prioritise wellbeing, connection, and accountability.</p>
-        </section>
-  <!-- This is the footer section for my page, in line with Semantic HTML -->
-  <footer>
     <div class="container">
-      <p>&copy; 2025 Jae Foster. All rights reserved.</p>
+      <!-- Page title on the left side -->
+      <h1 class="page-title">About Me</h1>
+      
+      <!-- Right side of header with buttons and separators -->
+      <div class="header-right">
+        <!-- Accessibility button to open accessibility options -->
+        <button class="header-btn" id="accessibility-btn" title="Accessibility Options">
+          <img src="images/accessibility-icon.png" alt="Accessibility icon">
+        </button>
+        
+        <!-- Separator line between accessibility and menu -->
+        <div class="header-separator"></div>
+        
+        <!-- Menu button to open navigation menu -->
+        <button class="header-btn" id="menu-btn" title="Menu" aria-expanded="false">
+          ☰
+        </button>
+      </div>
     </div>
-  </footer>
+    
+    <!-- Accessibility popup - hidden by default -->
+    <div class="accessibility-popup" id="accessibility-popup">
+      <h3>Accessibility Options</h3>
+      <button id="small-font-btn">Small Text</button>
+      <button id="normal-font-btn">Normal Text</button>
+      <button id="large-font-btn">Large Text</button>
+      <button id="dark-mode-btn">Dark Mode</button>
+      <button id="reset-btn">Reset to Default</button>
+    </div>
+  </header>
+  
+  <!-- Mobile navigation menu - hidden by default, shown when menu button is clicked -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a class="active" href="about.html">About</a>
+    <a href="projects.html">Project Showcase</a>
+    <a href="worksamples.html">Samples of Work</a>
+    <a href="resources.html">Resources</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact Me</a>
+  </nav>
+  <!-- This is the main content area for my page -->
+  <main>
+    <!-- Page title and icon section -->
+    <div class="page-header-section">
+      <h1 class="page-main-title">About</h1>
+      <div class="page-header-divider"></div>
+      <img src="images/profilepicture.png" alt="Profile picture" class="page-header-icon">
+    </div>
+    <div class="page-header-separator"></div>
+    
+    <!-- Brief section with title and view degree button -->
+    <section class="about-section">
+      <div class="section-header">
+        <h2 class="section-title">Brief</h2>
+        <a href="https://www.acu.edu.au/course/bachelor-of-education-secondarybachelor-of-arts-design-innovation-and-technologies" target="_blank" class="section-btn">View Degree</a>
+      </div>
+      
+      <p class="section-text">Hi, my name is Jae Foster and I'm currently studying to become a high school TAS teacher. I'm currently studying a Bachelor of Education (Secondary)/Bachelor of Arts (Design Innovation and Technologies) at the Australian Catholic University. I have a passion for design, technology, and helping others learn in creative and hands-on ways. I'm also a Student Learning Support Officer, where I work closely with students of all abilities to support their educational and emotional needs in the classroom. Finally, I am a NSW Department of Education Scholarship recipient for the teach.Rural scholarship.</p>
+      
+      <img src="images/professional-summary-banner.png" alt="Professional Summary Banner" class="section-image">
+    </section>
+    
+    <!-- Background section with title and view tutoring website button -->
+    <section class="about-section">
+      <div class="section-header">
+        <h2 class="section-title">Background</h2>
+        <a href="https://www.jandotutoring.com/" target="_blank" class="section-btn">View Tutoring Website</a>
+      </div>
+      
+      <p class="section-text">Outside of university and school, I run my own tutoring business, where I manage tutors and support students in Maths, English, and assignment planning. I use the NSW curriculum to design lessons and create tailored resources that align with syllabus outcomes. I enjoy developing interactive learning tools and games that make education fun and accessible for all learners. I am skilled at adapting to different student needs and differentiating instruction to ensure every student can succeed. I believe in building strong, positive relationships with students and making learning engaging, relevant, and achievable.</p>
+      
+      <!-- Single image -->
+      <img src="images/jando-image-secondary.png" alt="Jando Tutoring" class="section-image">
+    </section>
+    
+    <!-- Favourite subjects section -->
+    <section class="about-section">
+      <h2 class="section-title-centered">Favourite Subjects</h2>
+      
+      <div class="subject-cards">
+        <div class="subject-card">
+          <img src="images/design-and-tech.png" alt="Design & Tech" class="subject-image">
+          <h3 class="subject-title">Design & Tech</h3>
+        </div>
+        
+        <div class="subject-card">
+          <img src="images/timber-image.png" alt="Timber" class="subject-image">
+          <h3 class="subject-title">Timber</h3>
+        </div>
+        
+        <div class="subject-card">
+          <img src="images/digital-tech-image.png" alt="Digital Tech" class="subject-image">
+          <h3 class="subject-title">Digital Tech</h3>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Practicum Placements section -->
+    <section class="about-section">
+      <h2 class="section-title-centered">Practicum Placements</h2>
+      
+      <div class="table-container">
+        <table class="practicum-table">
+          <thead>
+            <tr>
+              <th>School</th>
+              <th>Subjects Taught</th>
+              <th>Year Level</th>
+              <th>Term</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chatswood High School</td>
+              <td>Stage 4 & 5 Digital Technologies</td>
+              <td>Years 7 & 9</td>
+              <td>Term 2, 2024</td>
+            </tr>
+            <tr>
+              <td>Ku-ring-Gai High School</td>
+              <td>Stage 5 Food Technology, Stage 5 Industrial Technology - Timber</td>
+              <td>Years 7 & 9</td>
+              <td>Term 4, 2024</td>
+            </tr>
+            <tr>
+              <td>Armidale Secondary College</td>
+              <td>Stage 4 Digital Technologies, Stage 5 & 6 Industrial Technology Timber</td>
+              <td>Years 7, 9, 10 & 12</td>
+              <td>Term 2-3, 2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- Teaching Philosophy section -->
+    <section class="about-section">
+      <h2 class="section-title-centered">Teaching Philosophy</h2>
+      
+      <p class="section-text">As a future teacher, I believe that all students are capable of growth when they feel safe, respected, and meaningfully engaged. My classroom management philosophy is built around the belief that behaviour is a form of communication, and that creating a predictable, inclusive, and relational environment is absolutely essential for promoting both wellbeing and academic success. I see my role as a teacher, as not only an instructor but also a facilitator of positive peer relationships, a model of respectful interactions, and a dedicated support for diverse student needs. My approach is built around the incorporation of Positive Behaviour Support (PBS), Bill Rogers' Eclectic Model of Decisive Discipline, and elements of Choice Theory. These frameworks work along side one another in promoting proactive, structured, and student-centred behaviour support. PBS provides a tiered model for promoting positive behaviour and responding to misbehaviour with consistency and equity, while Rogers' model adds practical strategies for maintaining calm authority and respectful correction to behaviour. Choice Theory informs my focus on student agency, which helps learners understand the link between their choices and consequences in a supportive way. Together, these models support the development of safe, engaging classrooms that ultimately prioritise wellbeing, connection, and accountability.</p>
+      
+      <img src="images/teaching-philosophy-image.png" alt="Teaching Philosophy" class="section-image">
+    </section>
+    
+    <!-- Teaching Style Quiz section -->
+    <section class="about-section">
+      <h2 class="section-title-centered">What Type of Teacher am I Quiz</h2>
+      
+      <button class="quiz-toggle-btn" onclick="toggleQuiz()">Tap to Display Quiz</button>
+      
+      <div class="quiz-container" id="quiz-container" style="display: none;">
+        <div class="quiz-question">
+          <h3>Question 1: What's your preferred teaching method?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="selectAnswer(1, 'hands-on', this)">Hands-on activities and projects</button>
+            <button class="quiz-option" onclick="selectAnswer(1, 'discussion', this)">Group discussions and debates</button>
+            <button class="quiz-option" onclick="selectAnswer(1, 'visual', this)">Visual presentations and demonstrations</button>
+          </div>
+        </div>
+        
+        <div class="quiz-question">
+          <h3>Question 2: How do you handle student mistakes?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="selectAnswer(2, 'learning', this)">Turn them into learning opportunities</button>
+            <button class="quiz-option" onclick="selectAnswer(2, 'support', this)">Provide extra support and encouragement</button>
+            <button class="quiz-option" onclick="selectAnswer(2, 'practice', this)">Give more practice exercises</button>
+          </div>
+        </div>
+        
+        <div class="quiz-question">
+          <h3>Question 3: What's most important in your classroom?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="selectAnswer(3, 'creativity', this)">Encouraging creativity and innovation</button>
+            <button class="quiz-option" onclick="selectAnswer(3, 'relationships', this)">Building strong student relationships</button>
+            <button class="quiz-option" onclick="selectAnswer(3, 'achievement', this)">Academic achievement and progress</button>
+          </div>
+        </div>
+        
+        <button class="quiz-submit-btn" onclick="calculateResult()" id="submit-btn" style="display: none;">Get My Teaching Style</button>
+        
+        <div class="quiz-result" id="quiz-result" style="display: none;">
+          <h3>Your Teaching Style:</h3>
+          <p id="result-text"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+    
+    <!-- This is the footer section for my page, in line with Semantic HTML -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jae Foster. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

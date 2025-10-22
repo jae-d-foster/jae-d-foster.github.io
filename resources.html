@@ -5,54 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jae's Teaching Portfolio - Resources</title>
     <link rel="stylesheet" href="starter.css">
+    <!-- Link to our JavaScript file for interactive functionality -->
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- This is a heading about me that is coloured blue and has Arial Font -->
+    <!-- New thin white header with page title and interactive buttons -->
     <header>
-        <h1>Resources</h1>
-    </header>
-    <!-- Navigation menu section -->
-    <nav>
         <div class="container">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Project Showcase</a></li>
-                <li><a href="worksamples.html">Samples of Work</a></li>
-                <li><a class="active" href="resources.html">Resources</a></li>
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="contact.html">Contact Me</a></li>                
-            </ul>
+            <!-- Page title on the left side -->
+            <h1 class="page-title">Resources</h1>
+            
+            <!-- Right side of header with buttons and separators -->
+            <div class="header-right">
+                <!-- Accessibility button to open accessibility options -->
+                <button class="header-btn" id="accessibility-btn" title="Accessibility Options">
+                    <img src="images/accessibility-icon.png" alt="Accessibility icon">
+                </button>
+                
+                <!-- Separator line between accessibility and menu -->
+                <div class="header-separator"></div>
+                
+                <!-- Menu button to open navigation menu -->
+                <button class="header-btn" id="menu-btn" title="Menu" aria-expanded="false">
+                    ☰
+                </button>
+            </div>
         </div>
+        
+        <!-- Accessibility popup - hidden by default -->
+        <div class="accessibility-popup" id="accessibility-popup">
+            <h3>Accessibility Options</h3>
+            <button id="small-font-btn">Small Text</button>
+            <button id="normal-font-btn">Normal Text</button>
+            <button id="large-font-btn">Large Text</button>
+            <button id="dark-mode-btn">Dark Mode</button>
+            <button id="reset-btn">Reset to Default</button>
+        </div>
+    </header>
+    
+    <!-- Mobile navigation menu - hidden by default, shown when menu button is clicked -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Project Showcase</a>
+        <a href="worksamples.html">Samples of Work</a>
+        <a class="active" href="resources.html">Resources</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact Me</a>
     </nav>
     <!-- This is the main content area for my page -->
     <main>
-        <!-- This is the section for ... -->
-        <section class="section">
-            <h2>Resources</h2>
-            <p>Below are some downloadable resources that I have created for my teaching practice. These resources are designed to support student learning and engagement in a vareity of TAS subjects.</p>
-            <!-- This division provides the structure for a grid of cards with thumbnails and download links -->
-            <div class="card-grid">   
-                <!-- Unit Plan -->
-                <article class="card">
-                    <a href="docs/Unit-plan.pdf" target="_blank" rel="noopener">
-                        <img src="images/unitplan-thumb.png">
-                    </a>
-                    <div class="content">   
-                        <h3>Year 11 Design & Technology Unit Plan</h3>
-                        <p>This is a sample Year 11 Design and Technology unit plan that I created for my teaching practice. It outlines the learning objectives, activities, and assessments for a specific unit of work, designed for Term 1.</p>
+        <!-- Page title and icon section -->
+        <div class="page-header-section">
+            <h1 class="page-main-title">Resources</h1>
+            <div class="page-header-divider"></div>
+            <img src="images/profilepicture.png" alt="Profile picture" class="page-header-icon">
+        </div>
+        
+        <!-- Horizontal line under page header -->
+        <div class="page-header-separator"></div>
+        
+        <!-- Intro section -->
+        <section class="intro-section">
+            <div class="content-card">
+                <h2>Intro</h2>
+                <p>This page features a collection of teaching resources that I have developed to enhance learning and engagement across Design & Technology. Each resource is designed to align with the NSW curriculum and support both student understanding and teacher delivery. The materials below include unit plans, example tasks, and assessment tools that demonstrate my ability to design structured, outcomes-based learning experiences for secondary students.</p>
+            </div>
+        </section>
+        
+        <!-- Resources section -->
+        <section class="resources-section">
+            <div class="content-card">
+                <h2>Teaching Resources</h2>
+                <!-- This division provides the structure for a grid of cards with thumbnails and download links -->
+                <div class="card-grid">   
+                    <!-- Unit Plan -->
+                    <article class="card">
+                        <a href="docs/Unit-plan.pdf" target="_blank" rel="noopener">
+                            <img src="images/unitplan-thumb.png" alt="Unit Plan thumbnail">
+                        </a>
+                        <div class="content">   
+                            <h3>Year 11 Design & Technology Unit Plan</h3>
+                            <p>This is a sample Year 11 Design and Technology unit plan that I created for my teaching practice. It outlines the learning objectives, activities, and assessments for a specific unit of work, designed for Term 1.</p>
+                        </div>
+                    </article>
+                    <!-- Example Resources -->
+                    <article class="card">
+                        <a href="docs/stage6-resources.pdf" target="_blank" rel="noopener">
+                            <img src="images/resources-thumb.png" alt="Resources thumbnail">
+                        </a>
+                        <div class="content">   
+                            <h3>Stage 6 Design & Technology Example Resources</h3>
+                            <p>This document contains a collection of example resources that I developed for Stage 6 Design and Technology students. These resources include worksheets, project guidelines, and assessment rubrics to support student learning and engagement.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Student Mark Converter section -->
+        <section class="mark-converter-section">
+            <div class="content-card">
+                <h2>Student Mark Converter</h2>
+                <p>This tool helps convert student marks between different grade formats. Enter a percentage mark to see the corresponding letter grade and band.</p>
+                
+                <div class="converter-container">
+                    <div class="input-group">
+                        <label for="mark-input">Enter Mark (%):</label>
+                        <input type="number" id="mark-input" min="0" max="100" placeholder="Enter percentage (0-100)">
+                        <button onclick="convertMark()" class="convert-btn">Convert</button>
                     </div>
-                </article>
-                <!-- Example Resources -->
-                <article class="card">
-                    <a href="docs/stage6-resources.pdf" target="_blank" rel="noopener">
-                        <img src="images/resources-thumb.png">
-                    </a>
-                    <div class="content">   
-                        <h3>Stage 6 Design & Technology Example Resources</h3>
-                        <p>This document contains a collection of example resources that I developed for Stage 6 Design and Technology students. These resources include worksheets, project guidelines, and assessment rubrics to support student learning and engagement.</p>
+                    
+                    <div class="results-container" id="results-container" style="display: none;">
+                        <div class="result-item">
+                            <strong>Letter Grade:</strong>
+                            <span id="letter-grade"></span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Band:</strong>
+                            <span id="band-result"></span>
+                        </div>
                     </div>
-                </article>
+                </div>
             </div>
         </section>
     </main>
