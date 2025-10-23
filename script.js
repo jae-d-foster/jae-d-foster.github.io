@@ -76,8 +76,22 @@ function filterProjects(category, clickedElement) {
 let quizAnswers = {};
 let questionsAnswered = 0;
 
+// Function to toggle quiz visibility
+function toggleQuiz() {
+    const quizContainer = document.getElementById('quiz-container');
+    const toggleBtn = document.querySelector('.quiz-toggle-btn');
+    
+    if (quizContainer.style.display === 'none' || quizContainer.style.display === '') {
+        quizContainer.style.display = 'block';
+        toggleBtn.textContent = 'Hide Quiz';
+    } else {
+        quizContainer.style.display = 'none';
+        toggleBtn.textContent = 'Tap to Display Quiz';
+    }
+}
+
 // Function to handle quiz option selection
-function selectAnswer(element, questionId, answerValue) {
+function selectAnswer(questionId, answerValue, element) {
     // Remove selected class from all options in this question
     const questionDiv = element.closest('.quiz-question');
     questionDiv.querySelectorAll('.quiz-option').forEach(option => {
@@ -97,80 +111,67 @@ function selectAnswer(element, questionId, answerValue) {
     }
     
     // Show submit button when all questions are answered
-    if (questionsAnswered >= 6) {
+    if (questionsAnswered >= 3) {  // Changed from 6 to 3 since you have 3 questions
         document.getElementById('submit-btn').style.display = 'block';
     }
 }
 
 // Function to calculate and display quiz results
-function submitQuiz() {
-    // Count points for each teaching style
-    const scores = {
-        'Facilitator': 0,
-        'Formal Authority': 0,
-        'Personal Model': 0,
-        'Expert': 0,
-        'Delegator': 0,
-        'Hybrid': 0
+function calculateResult() {
+    // Count answers for each teaching style approach
+    const styles = {
+        'hands-on': 0,
+        'discussion': 0,
+        'visual': 0,
+        'learning': 0,
+        'support': 0,
+        'practice': 0,
+        'creativity': 0,
+        'relationships': 0,
+        'achievement': 0
     };
     
-    // Add up scores based on answers
+    // Count the answers
     Object.values(quizAnswers).forEach(answer => {
-        if (scores.hasOwnProperty(answer)) {
-            scores[answer]++;
+        if (styles.hasOwnProperty(answer)) {
+            styles[answer]++;
         }
     });
     
-    // Find the highest scoring style
-    let topStyle = 'Hybrid';
-    let maxScore = 0;
+    // Determine teaching style based on combinations
+    let teachingStyle = '';
+    let description = '';
     
-    Object.entries(scores).forEach(([style, score]) => {
-        if (score > maxScore) {
-            maxScore = score;
-            topStyle = style;
-        }
-    });
-    
-    // Define teaching style descriptions
-    const descriptions = {
-        'Facilitator': 'You focus on guiding students to discover knowledge themselves. You encourage critical thinking and help students develop problem-solving skills through questioning and discussion.',
-        'Formal Authority': 'You provide clear structure and expectations. Students know exactly what is expected of them, and you maintain a well-organized learning environment with clear rules and procedures.',
-        'Personal Model': 'You lead by example and demonstrate skills and processes. Students learn by observing and mimicking your approach, and you provide hands-on guidance and coaching.',
-        'Expert': 'You share your deep knowledge and expertise with students. You focus on transmitting information effectively and helping students understand complex concepts through detailed explanations.',
-        'Delegator': 'You encourage student independence and self-directed learning. You provide resources and support while allowing students to take ownership of their learning journey.',
-        'Hybrid': 'You flexibly combine multiple teaching approaches based on the situation and student needs. You adapt your style to best serve different learning objectives and student preferences.'
-    };
+    // Check for dominant patterns
+    if (styles['hands-on'] >= 1 && styles['creativity'] >= 1) {
+        teachingStyle = 'Creative Facilitator';
+        description = 'You believe in learning through doing and encourage students to explore their creativity. You create hands-on learning experiences that allow students to discover and innovate.';
+    } else if (styles['discussion'] >= 1 && styles['relationships'] >= 1) {
+        teachingStyle = 'Collaborative Guide';
+        description = 'You foster strong relationships and encourage collaborative learning. You believe that students learn best through meaningful discussions and peer interaction.';
+    } else if (styles['visual'] >= 1 && styles['achievement'] >= 1) {
+        teachingStyle = 'Structured Presenter';
+        description = 'You organize information clearly and focus on helping students achieve their academic goals. You use visual aids and structured approaches to ensure understanding.';
+    } else if (styles['learning'] >= 1 && styles['support'] >= 1) {
+        teachingStyle = 'Supportive Mentor';
+        description = 'You turn challenges into opportunities and provide strong emotional support. You believe that mistakes are valuable learning experiences and every student can succeed with the right support.';
+    } else if (styles['practice'] >= 1) {
+        teachingStyle = 'Skill Builder';
+        description = 'You focus on building strong foundational skills through practice and repetition. You believe that mastery comes through consistent effort and structured learning.';
+    } else {
+        teachingStyle = 'Adaptive Educator';
+        description = 'You flexibly combine different teaching approaches based on student needs. You adapt your methods to create the best learning environment for each situation.';
+    }
     
     // Display result
     const resultDiv = document.getElementById('quiz-result');
-    resultDiv.innerHTML = `
-        <h3>Your Primary Teaching Style: ${topStyle}</h3>
-        <p>${descriptions[topStyle]}</p>
-        <p><strong>Score:</strong> ${maxScore} out of 6 questions</p>
-        <button onclick="resetQuiz()" class="reset-btn">Take Quiz Again</button>
-    `;
+    const resultText = document.getElementById('result-text');
     
-    // Show result
-    document.getElementById('quiz-result').style.display = 'block';
+    resultText.innerHTML = `<strong>${teachingStyle}</strong><br><br>${description}`;
+    resultDiv.style.display = 'block';
     
     // Hide submit button
     document.getElementById('submit-btn').style.display = 'none';
-}
-
-// Function to reset quiz
-function resetQuiz() {
-    quizAnswers = {};
-    questionsAnswered = 0;
-    
-    // Remove selected class from all options
-    document.querySelectorAll('.quiz-option').forEach(option => {
-        option.classList.remove('selected');
-    });
-    
-    // Hide submit button and result
-    document.getElementById('submit-btn').style.display = 'none';
-    document.getElementById('quiz-result').style.display = 'none';
 }
 
 // Wait for the page to fully load before running any JavaScript
