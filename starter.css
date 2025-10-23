@@ -183,13 +183,14 @@ h1, h2, h3, h4, h5, h6 {
 nav {
   background: #ffffff;             /* White background to match header */
   font-size: 0.95rem;             /* Slightly smaller font in navigation */
-  width: 250px;                   /* Fixed width for dropdown */
+  width: min(100% - 2*var(--spacing), var(--maxw)); /* Same width as main content cards */
   margin: 0;                      /* No margin around nav */
   box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Enhanced shadow for dropdown */
   display: none;                  /* Hidden by default - will show via JavaScript */
-  position: absolute;             /* Absolute position for dropdown */
-  top: 60px;                      /* Position right below the header */
-  right: 20px;                    /* Position from right edge */
+  position: fixed;                /* Fixed position relative to viewport */
+  top: 70px;                      /* Position below the header (header height + padding) */
+  left: 50%;                      /* Start from center of screen */
+  transform: translateX(-50%);    /* Center the menu horizontally */
   z-index: 1000;                  /* High z-index to appear above everything */
   border-radius: 8px;             /* Rounded corners */
   border: 1px solid #e0e0e0;      /* Light border */
@@ -216,10 +217,11 @@ nav a {
   font-family: 'Montserrat', sans-serif; /* Montserrat font */
   font-weight: 500;       /* Medium font weight */
   transition: all 0.3s ease;             /* Smooth transition */
+  text-align: right;      /* Right-align the text */
 }
 nav a:hover { 
   background: var(--blue-color);   /* Blue background on hover */
-  color: white;                    /* White text on hover */
+  color: rgb(155, 155, 155);                    /* White text on hover */
 }
 nav a:focus-visible {     
   outline: 2px solid var(--blue-color);    /* Blue outline for accessibility */
@@ -237,7 +239,8 @@ nav.mobile-menu-open {
 
 .active {
   background-color: var(--blue-color) !important;     /* Blue background for active page */
-  color: white !important;                            /* White text for active page */
+  color: black !important;                            /* White text for active page */
+  font-weight: 600 !important;                        /* Bold text for emphasis */
 }
 @media (max-width: 640px) {               /* responsiveness for viewing on mobile */
   nav .container { flex-wrap: wrap; }
@@ -640,7 +643,7 @@ body.dark-mode nav a:hover {
   color: #2a2a2a;                                 /* Dark text on hover */
 }
 
-body.dark-mode .active {
+body.dark-mode nav .active {
   background-color: #87CEEB !important;          /* Light blue background for active page */
   color: #2a2a2a !important;                     /* Dark text for active page */
 }
