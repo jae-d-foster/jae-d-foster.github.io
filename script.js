@@ -367,11 +367,39 @@ function convertMark() {
     const letterGradeSpan = document.getElementById('letter-grade');
     const bandResultSpan = document.getElementById('band-result');
     
+    // Clear any existing error messages
+    const existingError = document.getElementById('error-message');
+    if (existingError) {
+        existingError.remove();
+    }
+    
     const mark = parseFloat(markInput.value);
     
     // Validate input
     if (isNaN(mark) || mark < 0 || mark > 100) {
-        alert('Please enter a valid percentage between 0 and 100');
+        // Create and display error message on the page
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'error-message';
+        errorDiv.style.cssText = `
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef5350;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            text-align: center;
+        `;
+        errorDiv.textContent = 'Please enter a valid percentage between 0 and 100';
+        
+        // Insert error message after the input
+        markInput.parentNode.insertBefore(errorDiv, markInput.nextSibling);
+        
+        // Hide results container if it's visible
+        if (resultsContainer) {
+            resultsContainer.style.display = 'none';
+        }
         return;
     }
     
