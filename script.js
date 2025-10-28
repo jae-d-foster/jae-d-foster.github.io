@@ -1,7 +1,7 @@
 // JavaScript file for website interactivity
-// This file handles the accessibility popup and mobile menu
+// This file handles the accessibility popup and navigation menu
 
-// ========== PROJECT FILTERING FUNCTIONALITY ==========
+// PROJECT FILTERING FUNCTIONALIT
 // Store active categories
 let activeCategories = ['all'];
 
@@ -71,7 +71,7 @@ function filterProjects(category, clickedElement) {
     }
 }
 
-// ========== TEACHING STYLE QUIZ FUNCTIONALITY ==========
+// TEACHING STYLE QUIZ FUNCTIONALITY
 // Variables to store quiz answers
 let quizAnswers = {};
 let questionsAnswered = 0;
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentFontSize = 'normal';
     let isDarkMode = false;
     
-    // ========== ACCESSIBILITY POPUP FUNCTIONALITY ==========
+    // ACCESSIBILITY POPUP FUNCTIONALITY
     // Show or hide the accessibility popup when the accessibility button is clicked
     if (accessibilityBtn && accessibilityPopup) {
         accessibilityBtn.addEventListener('click', function() {
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ========== FONT SIZE CHANGE FUNCTIONALITY ==========
+    // FONT SIZE CHANGE FUNCTIONALITY
     // Function to change the font size of the entire page
     function changeFontSize(size) {
         // Remove any existing font size classes from the body
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ========== DARK MODE FUNCTIONALITY ==========
+    // DARK MODE FUNCTIONALITY
     // Function to toggle between light and dark mode
     function toggleDarkMode() {
         // Toggle the dark mode class on the body
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateAccessibilityIcon();
     }
     
-    // ========== RESET TO DEFAULT FUNCTIONALITY ==========
+    // RESET TO DEFAULT FUNCTIONALITY
     // Function to reset all accessibility settings to default
     function resetToDefault() {
         // Reset font size to normal
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateAccessibilityIcon();
     }
     
-    // ========== ACCESSIBILITY ICON UPDATE ==========
+    // ACCESSIBILITY ICON UPDATE
     // Function to update accessibility icon based on dark mode
     function updateAccessibilityIcon() {
         const accessibilityImg = document.querySelector('#accessibility-btn img');
@@ -288,8 +288,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ========== MOBILE MENU FUNCTIONALITY ==========
-    // Toggle mobile navigation menu when menu button is clicked
+    // NAVIGATION MENU FUNCTIONALITY
+    // Toggle Navigation menu when menu button is clicked
     if (menuBtn && mobileNav) {
         menuBtn.addEventListener('click', function() {
             // Toggle the mobile menu visibility
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ========== RESTORE SAVED SETTINGS ==========
+    // RESTORE SAVED SETTINGS
     // Check localStorage for saved font size and dark mode settings
     const savedFontSize = localStorage.getItem('fontSize');
     const savedDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update accessibility icon based on current mode
     updateAccessibilityIcon();
     
-    // ========== GRADUATION COUNTDOWN FUNCTIONALITY ==========
+    // GRADUATION COUNTDOWN FUNCTIONALITY
     // Function to calculate and update countdown
     function updateCountdown() {
         const graduationDate = new Date('2026-11-01'); // Graduation date - 374 days from Oct 23, 2025
@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ========== STUDENT MARK CONVERTER FUNCTIONALITY ==========
+// STUDENT MARK CONVERTER FUNCTIONALITY
 // Function to convert percentage marks to letter grades and bands
 function convertMark() {
     const markInput = document.getElementById('mark-input');
