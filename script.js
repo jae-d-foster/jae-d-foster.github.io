@@ -1,6 +1,89 @@
 // JavaScript file for website interactivity
 // This file handles the accessibility popup and navigation menu
 
+// IMAGE GALLERY FUNCTIONALITY
+let currentImageIndex = 0;
+const galleryImages = [
+    'images/majorproject.png',
+    'images/majorproject.png',
+    'images/majorproject.png',
+    'images/majorproject.png',
+    'images/majorproject.png',
+    'images/majorproject.png'
+];
+
+// Function to open gallery modal in full screen
+function openGallery(index) {
+    currentImageIndex = index;
+    
+    // Create modal if it doesn't exist
+    let modal = document.getElementById('gallery-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'gallery-modal';
+        modal.className = 'gallery-modal';
+        modal.innerHTML = `
+            <span class="gallery-close" onclick="closeGallery()">&times;</span>
+            <img class="gallery-modal-content" id="gallery-modal-image">
+            <a class="gallery-prev" onclick="changeGalleryImage(-1)">&#10094;</a>
+            <a class="gallery-next" onclick="changeGalleryImage(1)">&#10095;</a>
+        `;
+        document.body.appendChild(modal);
+    }
+    
+    // Update modal image
+    const modalImage = document.getElementById('gallery-modal-image');
+    modalImage.src = galleryImages[currentImageIndex];
+    
+    // Show modal
+    modal.style.display = 'block';
+    
+    // Prevent body scrolling when modal is open
+    document.body.style.overflow = 'hidden';
+}
+
+// Function to close gallery modal
+function closeGallery() {
+    const modal = document.getElementById('gallery-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+    
+    // Restore body scrolling
+    document.body.style.overflow = 'auto';
+}
+
+// Function to navigate gallery images in modal
+function changeGalleryImage(direction) {
+    currentImageIndex += direction;
+    
+    // Loop back to start/end if out of bounds
+    if (currentImageIndex >= galleryImages.length) {
+        currentImageIndex = 0;
+    } else if (currentImageIndex < 0) {
+        currentImageIndex = galleryImages.length - 1;
+    }
+    
+    // Update modal image
+    const modalImage = document.getElementById('gallery-modal-image');
+    modalImage.src = galleryImages[currentImageIndex];
+}
+
+// Close modal when clicking outside the image
+window.onclick = function(event) {
+    const modal = document.getElementById('gallery-modal');
+    if (event.target === modal) {
+        closeGallery();
+    }
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeGallery();
+    }
+});
+
 // PROJECT FILTERING FUNCTIONALIT
 // Store active categories
 let activeCategories = ['all'];

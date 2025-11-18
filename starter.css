@@ -1366,6 +1366,163 @@ body.dark-mode .project-card p {
   color: #cccccc;                                   /* Light grey for text */
 }
 
+/* Featured project card - full width */
+.project-card-featured {
+  width: 100%;                                      /* Full width spanning left to right */
+  max-width: none;                                  /* Remove width restriction */
+  display: flex;                                    /* Flex layout for side-by-side */
+  gap: 30px;                                        /* Space between gallery and content */
+  align-items: flex-start;                          /* Align items to top */
+}
+
+.featured-gallery {
+  flex: 1;                                          /* Take up available space */
+  min-width: 400px;                                 /* Minimum width for gallery */
+}
+
+.featured-main-image {
+  width: 100%;                                      /* Full width */
+  height: 400px;                                    /* Fixed height for consistency */
+  object-fit: cover;                                /* Cover area maintaining aspect */
+  border-radius: 8px;                              /* Rounded corners */
+  cursor: pointer;                                  /* Pointer cursor to indicate clickable */
+  transition: all 0.3s ease;                       /* Smooth transition */
+  margin-bottom: 15px;                              /* Space below main image */
+}
+
+.featured-main-image:hover {
+  transform: scale(1.02);                          /* Slight zoom on hover */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);        /* Enhanced shadow on hover */
+}
+
+.thumbnail-gallery {
+  display: flex;                                    /* Flex layout for thumbnails */
+  gap: 10px;                                        /* Space between thumbnails */
+  justify-content: flex-start;                      /* Align to start */
+  flex-wrap: wrap;                                  /* Allow wrapping */
+}
+
+.gallery-thumbnail {
+  width: calc(25% - 8px);                           /* 4 thumbnails per row with gaps */
+  height: 80px;                                     /* Fixed height for thumbnails */
+  object-fit: cover;                                /* Cover area maintaining aspect */
+  border-radius: 6px;                              /* Rounded corners */
+  cursor: pointer;                                  /* Pointer cursor */
+  border: 2px solid transparent;                   /* Transparent border by default */
+  transition: all 0.3s ease;                       /* Smooth transition */
+}
+
+.gallery-thumbnail:hover {
+  border-color: #5870a5;                            /* Blue border on hover */
+  transform: scale(1.05);                          /* Slight zoom on hover */
+}
+
+.gallery-thumbnail.active {
+  border-color: #5870a5;                            /* Blue border for active thumbnail */
+  box-shadow: 0 0 10px rgba(88, 112, 165, 0.4);  /* Blue glow for active */
+}
+
+.featured-content {
+  flex: 1;                                          /* Take up available space */
+  display: flex;                                    /* Flex layout for content */
+  flex-direction: column;                           /* Stack content vertically */
+  justify-content: center;                          /* Center content vertically */
+}
+
+.featured-content h3 {
+  font-size: 1.8rem;                                /* Larger font for featured title */
+  margin-bottom: 15px;                              /* Space below title */
+}
+
+.featured-content p {
+  font-size: 1.1rem;                                /* Larger font for featured description */
+  line-height: 1.7;                                 /* Better line spacing */
+}
+
+/* Gallery modal/lightbox */
+.gallery-modal {
+  display: none;                                    /* Hidden by default */
+  position: fixed;                                  /* Fixed position */
+  z-index: 1000;                                    /* High z-index to appear above everything */
+  left: 0;                                          /* Full width */
+  top: 0;                                           /* Full height */
+  width: 100%;                                      /* Full width */
+  height: 100%;                                     /* Full height */
+  background-color: rgba(0, 0, 0, 0.95);          /* Black background with opacity */
+  overflow: auto;                                   /* Enable scrolling if needed */
+}
+
+.gallery-modal-content {
+  position: relative;                               /* Relative positioning */
+  margin: auto;                                     /* Center horizontally */
+  display: block;                                   /* Block display */
+  width: 90%;                                       /* 90% of viewport width */
+  max-width: 1200px;                                /* Maximum width */
+  max-height: 90vh;                                 /* Maximum height */
+  object-fit: contain;                              /* Contain image within bounds */
+  margin-top: 5vh;                                  /* Space from top */
+}
+
+.gallery-close {
+  position: absolute;                               /* Absolute positioning */
+  top: 15px;                                        /* Position from top */
+  right: 35px;                                      /* Position from right */
+  color: #f1f1f1;                                   /* Light color */
+  font-size: 40px;                                  /* Large font */
+  font-weight: bold;                                /* Bold font */
+  cursor: pointer;                                  /* Pointer cursor */
+  transition: 0.3s;                                /* Smooth transition */
+}
+
+.gallery-close:hover,
+.gallery-close:focus {
+  color: #bbb;                                      /* Lighter color on hover */
+}
+
+.gallery-prev,
+.gallery-next {
+  position: absolute;                               /* Absolute positioning */
+  top: 50%;                                         /* Center vertically */
+  transform: translateY(-50%);                     /* Center adjustment */
+  color: white;                                     /* White color */
+  font-size: 30px;                                  /* Large font */
+  font-weight: bold;                                /* Bold font */
+  cursor: pointer;                                  /* Pointer cursor */
+  padding: 16px;                                    /* Padding around arrows */
+  background-color: rgba(0, 0, 0, 0.5);           /* Semi-transparent background */
+  border-radius: 4px;                              /* Rounded corners */
+  transition: 0.3s;                                /* Smooth transition */
+  user-select: none;                               /* Prevent text selection */
+}
+
+.gallery-prev {
+  left: 20px;                                       /* Position from left */
+}
+
+.gallery-next {
+  right: 20px;                                      /* Position from right */
+}
+
+.gallery-prev:hover,
+.gallery-next:hover {
+  background-color: rgba(88, 112, 165, 0.8);      /* Blue background on hover */
+}
+
+/* Dark mode styles for featured card and gallery */
+body.dark-mode .project-card-featured {
+  background: #2a2a2a;                              /* Dark background */
+  border-color: #555555;                            /* Darker border */
+}
+
+body.dark-mode .gallery-thumbnail {
+  border-color: #404040;                            /* Dark border */
+}
+
+body.dark-mode .gallery-thumbnail:hover {
+  border-color: #87CEEB;                            /* Light blue border on hover */
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3); /* Light blue shadow on hover */
+}
+
 /* Responsive design for projects page */
 @media (max-width: 768px) {
   .project-filters {
@@ -1381,6 +1538,49 @@ body.dark-mode .project-card p {
   .projects-container {
     grid-template-columns: 1fr;                     /* Single column on mobile */
     gap: 20px;                                      /* Reduce gap */
+  }
+  
+  .project-card-featured {
+    gap: 15px;                                      /* Reduce gap on mobile */
+  }
+  
+  .featured-images-row {
+    flex-direction: column;                         /* Stack images vertically on mobile */
+    gap: 15px;                                      /* Reduce gap */
+  }
+  
+  .featured-main-image {
+    width: 100%;                                    /* Full width on mobile */
+    height: 250px;                                  /* Smaller height on mobile */
+  }
+  
+  .thumbnail-gallery {
+    grid-template-columns: repeat(3, 1fr);         /* Keep 3 columns on mobile */
+    height: auto;                                   /* Auto height on mobile */
+    gap: 8px;                                       /* Smaller gap */
+  }
+  
+  .gallery-thumbnail {
+    height: 80px;                                   /* Fixed height for thumbnails on mobile */
+  }
+  
+  .featured-content h3 {
+    font-size: 1.4rem;                              /* Smaller font on mobile */
+  }
+  
+  .featured-content p {
+    font-size: 1rem;                                /* Normal font on mobile */
+  }
+  
+  .gallery-modal-content {
+    width: 95%;                                     /* Wider on mobile */
+    margin-top: 10vh;                               /* More space from top */
+  }
+  
+  .gallery-prev,
+  .gallery-next {
+    font-size: 24px;                                /* Smaller arrows on mobile */
+    padding: 12px;                                  /* Less padding */
   }
 }
 
